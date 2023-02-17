@@ -1,7 +1,9 @@
 package models.command.impl.calculator;
 
-import lombok.experimental.SuperBuilder;
+import models.context.CalculatorContext;
 
-@SuperBuilder
 public abstract class NoArgCalculatorContextCommand extends CalculatorContextCommand {
+    public NoArgCalculatorContextCommand(CalculatorContext context) {
+        super(context);
+    }
 }
