@@ -1,7 +1,7 @@
 package models.command.impl.calculator.math;
 
-import exceptions.command.NotEnoughOperandsException;
-import exceptions.command.NotFiniteOperandException;
+import exceptions.command.math.NotEnoughOperandsException;
+import exceptions.command.math.NotFiniteOperandException;
 import lombok.NonNull;
 import lombok.extern.log4j.Log4j;
 import models.command.impl.calculator.NoArgCalculatorContextCommand;

@@ -1,6 +1,6 @@
 package models.command.impl.calculator.math;
 
-import exceptions.command.SqrtException;
+import exceptions.command.math.SqrtException;
 import lombok.NonNull;
 import lombok.extern.log4j.Log4j;
 import models.context.CalculatorContext;
