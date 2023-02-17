@@ -1,4 +1,4 @@
-package models.command.impl;
+package models.command.impl.calculator;
 
 import lombok.AllArgsConstructor;
 import models.command.Command;
