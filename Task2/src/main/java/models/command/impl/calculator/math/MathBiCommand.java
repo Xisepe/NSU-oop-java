@@ -1,6 +1,5 @@
 package models.command.impl.calculator.math;
 
-import exceptions.command.CommandException;
 import exceptions.command.NotEnoughOperandsException;
 import exceptions.command.NotFiniteOperandException;
 import lombok.NonNull;
@@ -46,7 +45,7 @@ public class MathBiCommand extends NoArgCalculatorContextCommand {
     public void execute() {
         log.info(String.format("Executing MathBiCommand with command name %s", commandName));
         double res = function.apply(first, second);
-        log.info(String.format("Result of MathBiCommand with command name %s is %", commandName, res));
+        log.info(String.format("Result of MathBiCommand with command name %s is %f", commandName, res));
         context.getStack().push(res);
     }
 }
