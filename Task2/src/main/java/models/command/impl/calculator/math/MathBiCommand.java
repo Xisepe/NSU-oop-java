@@ -32,6 +32,7 @@ public class MathBiCommand extends NoArgCalculatorContextCommand {
         this.first = stack.pop();
         checkOperands();
         this.function = function;
+        log.info("Validation complete");
     }
 
     private void checkOperands() {
