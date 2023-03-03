@@ -4,7 +4,7 @@ import lombok.extern.log4j.Log4j;
 
 @Log4j
 public class Multiply extends MathCommand{
-    protected Multiply() {
+    public Multiply() {
         super(2);
     }
 

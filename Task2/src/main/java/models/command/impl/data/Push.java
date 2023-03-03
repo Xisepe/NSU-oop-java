@@ -20,7 +20,11 @@ public class Push implements Command {
             Stack<Double> stack = (Stack<Double>) context.getContextElement(MathContext.stack);
             Map<String, Double> defines = (Map<String, Double>) context.getContextElement(MathContext.defines);
             log.info("Pushing " + args);
-            stack.push(defines.getOrDefault(args, Double.parseDouble(args)));
+            if (!defines.containsKey(args)) {
+                stack.push(Double.parseDouble(args));
+            } else {
+                stack.push(defines.get(args));
+            }
         } catch (ContextException e) {
             log.warn(e.getMessage());
             System.err.println(e.getMessage());

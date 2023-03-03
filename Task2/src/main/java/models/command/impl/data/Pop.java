@@ -10,7 +10,7 @@ import models.context.Context;
 import java.util.Stack;
 @Log4j
 public class Pop extends AbstractCommand {
-    protected Pop() {
+    public Pop() {
         super(1);
     }
     @Override

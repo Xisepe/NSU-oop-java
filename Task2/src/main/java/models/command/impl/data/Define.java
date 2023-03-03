@@ -21,7 +21,11 @@ public class Define implements Command {
                 throw new ArgumentsValidationExceprion("Wrong number of arguments");
             }
             log.info("Trying to define: " + s[0] + " = " + s[1]);
-            defines.put(s[0], defines.getOrDefault(s[1], Double.parseDouble(s[1])));
+            if (defines.containsKey(s[1])) {
+                defines.put(s[0], defines.get(s[1]));
+            } else {
+                defines.put(s[0], Double.parseDouble(s[1]));
+            }
         } catch (ContextException e) {
             log.warn(e.getMessage());
             System.err.println(e.getMessage());

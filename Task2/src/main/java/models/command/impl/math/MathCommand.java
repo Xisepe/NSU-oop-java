@@ -19,7 +19,13 @@ public abstract class MathCommand extends AbstractCommand {
         try {
             Stack<Double> stack = (Stack<Double>) context.getContextElement(MathContext.stack);
             validate(stack);
-            stack.push(performOperation(stack.pop(), stack.pop()));
+            if (operandsNumber == 1) {
+                stack.push(performOperation(stack.pop()));
+            } else {
+                Double second = stack.pop();
+                Double first = stack.pop();
+                stack.push(performOperation(first, second));
+            }
         } catch (ContextException e) {
             log.warn(e.getMessage());
             System.err.println(e.getMessage());
