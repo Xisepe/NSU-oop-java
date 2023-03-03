@@ -5,7 +5,6 @@ import lombok.extern.log4j.Log4j;
 import models.command.Command;
 import services.Factory;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
@@ -43,7 +42,7 @@ public class SingletonCommandFactory implements Factory<Command> {
             try {
                 creationRegistry.put((String) key, (Class<Command>) Class.forName((String) value));
             } catch (ClassNotFoundException e) {
-                log.warn("Cannot find class: " + (String) value);
+                log.warn("Cannot find class: " + value);
                 throw new ClassLoadFactoryException((String) value);
             }
         });
@@ -74,7 +73,7 @@ public class SingletonCommandFactory implements Factory<Command> {
                 log.warn("Cannot find class: " + name);
                 throw new NoSuchClassException(name);
             }
-            Command command = null;
+            Command command;
             try {
                 command = aClass.getConstructor(null).newInstance(null);
             } catch (NoSuchMethodException e) {

@@ -1,6 +1,6 @@
 package command;
 
-import exceptions.command.ArgumentsValidationExceprion;
+import exceptions.command.ArgumentsValidationException;
 import exceptions.command.NotEnoughStackElements;
 import models.command.Command;
 import models.context.Context;
@@ -48,7 +48,7 @@ public class DataCommandTest {
             push.execute(ctx,"a");
             assertEquals(123.456, stack.peek(), delta);
         }
-        @Test(expected = ArgumentsValidationExceprion.class)
+        @Test(expected = ArgumentsValidationException.class)
         public void testPushWithWrongArg() {
             push.execute(ctx,"abcs");
         }
@@ -80,11 +80,11 @@ public class DataCommandTest {
             define.execute(ctx,"a 1000.0");
             assertEquals(1000.0, defines.get("a"), delta);
         }
-        @Test(expected = ArgumentsValidationExceprion.class)
+        @Test(expected = ArgumentsValidationException.class)
         public void testDefineWithWrongNotEnoughArgs() {
             define.execute(ctx,"abc");
         }
-        @Test(expected = ArgumentsValidationExceprion.class)
+        @Test(expected = ArgumentsValidationException.class)
         public void testDefineWithWrongArgs() {
             define.execute(ctx,"abc avs");
         }

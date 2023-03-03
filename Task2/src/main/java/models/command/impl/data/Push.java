@@ -1,6 +1,6 @@
 package models.command.impl.data;
 
-import exceptions.command.ArgumentsValidationExceprion;
+import exceptions.command.ArgumentsValidationException;
 import exceptions.context.ContextException;
 import lombok.NoArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -17,6 +17,9 @@ public class Push implements Command {
     @Override
     public void execute(Context context, String args) {
         try {
+            if (args == null) {
+                throw new ArgumentsValidationException("No arguments provided. At least one argument must be provided.");
+            }
             Stack<Double> stack = (Stack<Double>) context.getContextElement(MathContext.stack);
             Map<String, Double> defines = (Map<String, Double>) context.getContextElement(MathContext.defines);
             log.info("Pushing " + args);
@@ -33,7 +36,7 @@ public class Push implements Command {
             System.err.println("Косяк со стороны программиста");
         } catch (NumberFormatException e) {
             log.warn("Args: " + args + " is not a number");
-            throw new ArgumentsValidationExceprion("Wrong arguments");
+            throw new ArgumentsValidationException("Wrong arguments");
         }
     }
 }

@@ -1,6 +1,5 @@
 package models.command.impl.data;
 
-import exceptions.command.ArgumentsValidationExceprion;
 import exceptions.context.ContextException;
 import lombok.extern.log4j.Log4j;
 import models.command.impl.AbstractCommand;

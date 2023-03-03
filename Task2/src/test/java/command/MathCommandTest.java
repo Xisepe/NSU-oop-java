@@ -6,11 +6,9 @@ import models.command.Command;
 import models.context.Context;
 import models.context.DefaultContext;
 import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.runners.Enclosed;
 import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
 import services.impl.SingletonCommandFactory;
 
 import java.util.Stack;
