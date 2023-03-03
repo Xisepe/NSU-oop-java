@@ -10,13 +10,13 @@ public class DefaultContext implements Context{
     private DefaultContext(DefaultContextBuilder builder) {
         this.ctx = builder.ctx;
     }
-    private static class DefaultContextBuilder {
+    public static class DefaultContextBuilder {
         private final Map<String, Object> ctx = new HashMap<>();
-        DefaultContextBuilder with(String key, Object value) {
+        public DefaultContextBuilder with(String key, Object value) {
             ctx.put(key, value);
             return this;
         }
-        DefaultContext build() {
+        public DefaultContext build() {
             return new DefaultContext(this);
         }
     }
