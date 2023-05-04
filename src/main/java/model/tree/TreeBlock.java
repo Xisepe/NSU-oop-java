@@ -6,6 +6,6 @@ import model.state.Position;
 @Data
 public class TreeBlock {
     private boolean chopped;
-    private boolean branch;
+//    private boolean branch;
     private Position branchPosition;
 }

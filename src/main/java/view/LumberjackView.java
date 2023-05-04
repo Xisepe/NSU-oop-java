@@ -1,6 +1,5 @@
 package view;
 
-import lombok.RequiredArgsConstructor;
 import model.asset.LumberjackAssets;
 import model.event.GameEvent;
 import model.event.player.DrawLumberjackChopEvent;
@@ -9,13 +8,19 @@ import model.player.Lumberjack;
 import model.state.Position;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 
-@RequiredArgsConstructor
 public class LumberjackView extends DefaultView {
 
     private final Lumberjack player;
     private final LumberjackAssets lumberjackAssets;
+
+    public LumberjackView(BufferedImage buffer, Lumberjack player, LumberjackAssets lumberjackAssets) {
+        super(buffer);
+        this.player = player;
+        this.lumberjackAssets = lumberjackAssets;
+    }
 
     private void drawChop() {
         Graphics2D g2d = (Graphics2D) buffer.getGraphics();

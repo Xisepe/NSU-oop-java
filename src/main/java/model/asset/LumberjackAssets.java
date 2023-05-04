@@ -6,7 +6,6 @@ import lombok.Data;
 import java.awt.image.BufferedImage;
 
 @Data
-@AllArgsConstructor
 public class LumberjackAssets {
     private BufferedImage chopLeft;
     private BufferedImage chopRight;

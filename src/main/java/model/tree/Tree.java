@@ -79,19 +79,19 @@ public class Tree {
         switch (state) {
             case -1: {
                 blocks[index].setChopped(false);
-                blocks[index].setBranch(true);
+//                blocks[index].setBranch(true);
                 blocks[index].setBranchPosition(Position.LEFT);
                 break;
             }
             case 1: {
                 blocks[index].setChopped(false);
-                blocks[index].setBranch(true);
+//                blocks[index].setBranch(true);
                 blocks[index].setBranchPosition(Position.RIGHT);
                 break;
             }
             default: {
                 blocks[index].setChopped(false);
-                blocks[index].setBranch(false);
+//                blocks[index].setBranch(false);
                 blocks[index].setBranchPosition(Position.NONE);
                 break;
             }
