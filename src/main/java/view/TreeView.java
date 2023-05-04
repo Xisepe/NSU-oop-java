@@ -3,7 +3,7 @@ package view;
 import model.asset.TreeAssets;
 import model.event.GameEvent;
 import model.event.tree.DrawChoppedTreeEvent;
-import model.event.tree.DrawTreeEvent;
+import model.event.tree.DrawAllTreeEvent;
 import model.tree.Tree;
 import model.tree.TreeBlock;
 
@@ -67,7 +67,7 @@ public class TreeView extends DefaultView {
     public void notify(GameEvent event) {
         if (event instanceof DrawChoppedTreeEvent) {
             drawTreeFromTop((Graphics2D) buffer.getGraphics(), tree.getVisibleAmount() - 1);
-        } else if (event instanceof DrawTreeEvent) {
+        } else if (event instanceof DrawAllTreeEvent) {
             drawTreeFromTop((Graphics2D) buffer.getGraphics(), tree.getVisibleAmount());
         }
     }

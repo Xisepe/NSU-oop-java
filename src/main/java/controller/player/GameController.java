@@ -3,60 +3,50 @@ package controller.player;
 import controller.DefaultController;
 import lombok.RequiredArgsConstructor;
 import model.event.GameOverEvent;
+import model.event.background.DrawBackgroundEvent;
+import model.event.player.DrawChopLumberjackEvent;
+import model.event.player.DrawStandLumberjackEvent;
+import model.event.player.DrawSwingLumberjackEvent;
+import model.event.tree.DrawAllTreeEvent;
+import model.event.tree.DrawChoppedTreeEvent;
 import model.player.Lumberjack;
+import model.state.Action;
 import model.tree.Tree;
-import service.notifier.ChopNotifier;
-import service.notifier.StayNotifier;
-import service.notifier.ViewNotifier;
 
 @RequiredArgsConstructor
 public class GameController extends DefaultController {
     private final KeyboardController keyboardController;
     private final Lumberjack player;
     private final Tree tree;
-    private boolean available;
-
-    private final ViewNotifier chopNotifier = new ChopNotifier(this);
-    private final ViewNotifier stayNotifier = new StayNotifier(this);
 
     @Override
     public void update() {
-        if (!available || !isChop()) {
-            stay();
-            return;
+        switch (player.getAction()) {
+            case STAND: {
+                if (!isChop()) {
+                    return;
+                }
+                movePlayer();
+                swing();
+                drawSwing();
+                break;
+            }
+            case SWING: {
+                chop();
+                if (isDead()) {
+                    gameOver();
+                    return;
+                }
+                drawChop();
+                break;
+            }
+            case CHOP: {
+                stand();
+                drawStand();
+                break;
+            }
         }
-        movePlayer();
-        chop();
-    }
 
-    public void chop() {
-        available = false;
-        player.chop(tree);
-        if (isDead()) {
-            notifyAll(new GameOverEvent());
-        }
-        requestChopViewUpdate();
-    }
-
-    public void stay() {
-        available = true;
-        requestStayViewUpdate();
-    }
-
-    public boolean isDead() {
-        return player.isDead();
-    }
-
-    private void requestChopViewUpdate() {
-        chopNotifier.notifyView();
-    }
-
-    private void requestStayViewUpdate() {
-        stayNotifier.notifyView();
-    }
-
-    private boolean isChop() {
-        return keyboardController.isChopLeft() || keyboardController.isChopRight();
     }
 
     private void movePlayer() {
@@ -65,5 +55,72 @@ public class GameController extends DefaultController {
         } else if (!keyboardController.isChopRight() && keyboardController.isChopLeft()) {
             player.moveLeft();
         }
+    }
+
+    private void swing() {
+        player.setAction(Action.SWING);
+    }
+
+    private void drawSwing() {
+        drawBackground();
+        drawAllTree();
+        drawSwingLumberjack();
+    }
+
+    private void drawSwingLumberjack() {
+        notifyAll(new DrawSwingLumberjackEvent());
+    }
+
+    private boolean isChop() {
+        return keyboardController.isChopLeft() || keyboardController.isChopRight();
+    }
+
+    private void chop() {
+        player.setAction(Action.CHOP);
+        player.chop(tree);
+    }
+
+    private void drawChop() {
+        drawBackground();
+        drawChoppedTree();
+        drawChopLumberjack();
+    }
+
+    private void stand() {
+        player.setAction(Action.STAND);
+    }
+
+    private void drawStand() {
+        drawBackground();
+        drawAllTree();
+        drawStandLumberjack();
+    }
+
+    public boolean isDead() {
+        return player.isDead();
+    }
+
+    public void gameOver() {
+        notifyAll(new GameOverEvent());
+    }
+
+    private void drawBackground() {
+        notifyAll(new DrawBackgroundEvent());
+    }
+
+    private void drawChoppedTree() {
+        notifyAll(new DrawChoppedTreeEvent());
+    }
+
+    private void drawAllTree() {
+        notifyAll(new DrawAllTreeEvent());
+    }
+
+    private void drawChopLumberjack() {
+        notifyAll(new DrawChopLumberjackEvent());
+    }
+
+    private void drawStandLumberjack() {
+        notifyAll(new DrawStandLumberjackEvent());
     }
 }

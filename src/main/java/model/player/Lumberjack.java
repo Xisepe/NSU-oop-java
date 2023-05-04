@@ -1,6 +1,7 @@
 package model.player;
 
 import lombok.Data;
+import model.state.Action;
 import model.state.Position;
 import model.tree.Tree;
 
@@ -8,6 +9,7 @@ import model.tree.Tree;
 public class Lumberjack {
     private Position playerPosition = Position.LEFT;
     private boolean dead;
+    private Action action = Action.STAND;
 
     public void chop(Tree tree) {
         tree.getCurrentTreeBlock().setChopped(true);

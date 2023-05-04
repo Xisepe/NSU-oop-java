@@ -1,9 +1,10 @@
 package view;
 
-import model.asset.LumberjackAssets;
+import model.asset.LumberjackViewData;
 import model.event.GameEvent;
-import model.event.player.DrawLumberjackChopEvent;
-import model.event.player.DrawLumberjackStayEvent;
+import model.event.player.DrawChopLumberjackEvent;
+import model.event.player.DrawStandLumberjackEvent;
+import model.event.player.DrawSwingLumberjackEvent;
 import model.player.Lumberjack;
 import model.state.Position;
 
@@ -14,58 +15,68 @@ import java.awt.image.BufferedImage;
 public class LumberjackView extends DefaultView {
 
     private final Lumberjack player;
-    private final LumberjackAssets lumberjackAssets;
+    private final LumberjackViewData viewData;
 
-    public LumberjackView(BufferedImage buffer, Lumberjack player, LumberjackAssets lumberjackAssets) {
+    public LumberjackView(BufferedImage buffer, Lumberjack player, LumberjackViewData viewData) {
         super(buffer);
         this.player = player;
-        this.lumberjackAssets = lumberjackAssets;
+        this.viewData = viewData;
     }
 
-    private void drawChop() {
-        Graphics2D g2d = (Graphics2D) buffer.getGraphics();
+    private void drawLeft(Graphics2D g, BufferedImage image) {
+        g.drawImage(
+                image,
+                viewData.getXOffset(),
+                viewData.getYOffset(),
+                null
+        );
+    }
+
+    private void drawRight(Graphics2D g, BufferedImage image) {
+        g.drawImage(
+                image,
+                buffer.getWidth() - viewData.getStandRight().getWidth() - viewData.getXOffset(),
+                viewData.getYOffset(),
+                null
+        );
+    }
+
+    private void drawStand() {
+        Graphics2D g = (Graphics2D) buffer.getGraphics();
         if (player.getPlayerPosition() == Position.LEFT) {
-            g2d.drawImage(
-                    lumberjackAssets.getChopLeft(),
-                    lumberjackAssets.getXOffsetChop(),
-                    lumberjackAssets.getYOffsetChop(),
-                    null
-            );
+            drawLeft(g, viewData.getStandLeft());
         } else {
-            g2d.drawImage(
-                    lumberjackAssets.getChopRight(),
-                    buffer.getWidth() - lumberjackAssets.getXOffsetChop() - lumberjackAssets.getChopRight().getWidth(),
-                    lumberjackAssets.getYOffsetChop(),
-                    null
-            );
+            drawRight(g, viewData.getStandRight());
         }
     }
 
-    private void drawStay() {
-        Graphics2D g2d = (Graphics2D) buffer.getGraphics();
+    private void drawSwing() {
+        Graphics2D g = (Graphics2D) buffer.getGraphics();
         if (player.getPlayerPosition() == Position.LEFT) {
-            g2d.drawImage(
-                    lumberjackAssets.getStayLeft(),
-                    lumberjackAssets.getXOffsetStay(),
-                    lumberjackAssets.getYOffsetStay(),
-                    null
-            );
+            drawLeft(g, viewData.getSwingLeft());
         } else {
-            g2d.drawImage(
-                    lumberjackAssets.getChopRight(),
-                    buffer.getWidth() - lumberjackAssets.getXOffsetStay() - lumberjackAssets.getChopRight().getWidth(),
-                    lumberjackAssets.getYOffsetStay(),
-                    null
-            );
+            drawRight(g, viewData.getSwingRight());
+
+        }
+    }
+
+    private void drawChop() {
+        Graphics2D g = (Graphics2D) buffer.getGraphics();
+        if (player.getPlayerPosition() == Position.LEFT) {
+            drawLeft(g, viewData.getChopLeft());
+        } else {
+            drawRight(g, viewData.getChopRight());
         }
     }
 
     @Override
     public void notify(GameEvent event) {
-        if (event instanceof DrawLumberjackChopEvent) {
+        if (event instanceof DrawStandLumberjackEvent) {
+            drawStand();
+        } else if (event instanceof DrawSwingLumberjackEvent) {
+            drawSwing();
+        } else if (event instanceof DrawChopLumberjackEvent) {
             drawChop();
-        } else if (event instanceof DrawLumberjackStayEvent) {
-            drawStay();
         }
     }
 }
