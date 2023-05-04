@@ -5,6 +5,7 @@ import model.event.GameEvent;
 import model.event.player.DrawChopLumberjackEvent;
 import model.event.player.DrawStandLumberjackEvent;
 import model.event.player.DrawSwingLumberjackEvent;
+import model.event.player.LumberjackEvent;
 import model.player.Lumberjack;
 import model.state.Position;
 
@@ -71,6 +72,9 @@ public class LumberjackView extends DefaultView {
 
     @Override
     public void notify(GameEvent event) {
+        if (!(event instanceof LumberjackEvent)) {
+            return;
+        }
         if (event instanceof DrawStandLumberjackEvent) {
             drawStand();
         } else if (event instanceof DrawSwingLumberjackEvent) {

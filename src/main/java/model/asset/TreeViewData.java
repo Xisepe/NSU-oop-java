@@ -5,7 +5,7 @@ import lombok.Data;
 import java.awt.image.BufferedImage;
 
 @Data
-public class TreeAssets {
+public class TreeViewData {
     private BufferedImage branchLeft;
     private BufferedImage branchRight;
     private BufferedImage trunk;

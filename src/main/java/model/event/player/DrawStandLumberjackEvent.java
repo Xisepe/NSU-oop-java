@@ -2,5 +2,5 @@ package model.event.player;
 
 import model.event.GameEvent;
 
-public class DrawStandLumberjackEvent implements GameEvent {
+public class DrawStandLumberjackEvent extends LumberjackEvent {
 }

@@ -1,9 +1,10 @@
 package view;
 
-import model.asset.TreeAssets;
+import model.asset.TreeViewData;
 import model.event.GameEvent;
 import model.event.tree.DrawChoppedTreeEvent;
 import model.event.tree.DrawAllTreeEvent;
+import model.event.tree.TreeEvent;
 import model.tree.Tree;
 import model.tree.TreeBlock;
 
@@ -13,19 +14,19 @@ import java.awt.image.BufferedImage;
 public class TreeView extends DefaultView {
 
     private final Tree tree;
-    private final TreeAssets treeAssets;
+    private final TreeViewData viewData;
 
-    public TreeView(BufferedImage buffer, Tree tree, TreeAssets treeAssets) {
+    public TreeView(BufferedImage buffer, Tree tree, TreeViewData viewData) {
         super(buffer);
         this.tree = tree;
-        this.treeAssets = treeAssets;
+        this.viewData = viewData;
     }
 
     private void drawStamp(Graphics2D graphics2D) {
         graphics2D.drawImage(
-                treeAssets.getStump(),
-                treeAssets.getXOffsetStump(),
-                treeAssets.getYOffsetStump(),
+                viewData.getStump(),
+                viewData.getXOffsetStump(),
+                viewData.getYOffsetStump(),
                 null
         );
     }
@@ -34,7 +35,7 @@ public class TreeView extends DefaultView {
         BufferedImage treeBlockImage = getTreeBlockImage(treeBlock);
         graphics2D.drawImage(
                 treeBlockImage,
-                treeAssets.getXOffsetTree(),
+                viewData.getXOffsetTree(),
                 treeBlockImage.getHeight() * index,
                 null
         );
@@ -54,17 +55,20 @@ public class TreeView extends DefaultView {
     private BufferedImage getTreeBlockImage(TreeBlock treeBlock) {
         switch (treeBlock.getBranchPosition()) {
             case LEFT:
-                return treeAssets.getBranchLeft();
+                return viewData.getBranchLeft();
             case RIGHT:
-                return treeAssets.getBranchRight();
+                return viewData.getBranchRight();
             case NONE:
-                return treeAssets.getTrunk();
+                return viewData.getTrunk();
         }
         return null;
     }
 
     @Override
     public void notify(GameEvent event) {
+        if (!(event instanceof TreeEvent)) {
+            return;
+        }
         if (event instanceof DrawChoppedTreeEvent) {
             drawTreeFromTop((Graphics2D) buffer.getGraphics(), tree.getVisibleAmount() - 1);
         } else if (event instanceof DrawAllTreeEvent) {
