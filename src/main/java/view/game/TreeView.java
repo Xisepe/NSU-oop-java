@@ -1,6 +1,8 @@
 package view.game;
 
+import lombok.RequiredArgsConstructor;
 import model.asset.TreeViewData;
+import model.drawbuffer.DrawableBuffer;
 import model.event.GameEvent;
 import model.event.tree.DrawChoppedTreeEvent;
 import model.event.tree.DrawAllTreeEvent;
@@ -17,7 +19,7 @@ public class TreeView extends DefaultView {
     private final Tree tree;
     private final TreeViewData viewData;
 
-    public TreeView(BufferedImage buffer, Tree tree, TreeViewData viewData) {
+    public TreeView(DrawableBuffer buffer, Tree tree, TreeViewData viewData) {
         super(buffer);
         this.tree = tree;
         this.viewData = viewData;
@@ -71,9 +73,9 @@ public class TreeView extends DefaultView {
             return;
         }
         if (event instanceof DrawChoppedTreeEvent) {
-            drawTreeFromTop((Graphics2D) buffer.getGraphics(), tree.getVisibleAmount() - 1);
+            drawTreeFromTop((Graphics2D) buffer.getBuffer().getGraphics(), tree.getVisibleAmount() - 1);
         } else if (event instanceof DrawAllTreeEvent) {
-            drawTreeFromTop((Graphics2D) buffer.getGraphics(), tree.getVisibleAmount());
+            drawTreeFromTop((Graphics2D) buffer.getBuffer().getGraphics(), tree.getVisibleAmount());
         }
     }
 }

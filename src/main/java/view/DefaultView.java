@@ -1,15 +1,10 @@
 package view;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.RequiredArgsConstructor;
+import model.drawbuffer.DrawableBuffer;
 import service.observer.GameObserver;
 
-import java.awt.image.BufferedImage;
-
-@AllArgsConstructor
+@RequiredArgsConstructor
 public abstract class DefaultView implements GameObserver {
-    @Getter
-    @Setter
-    protected BufferedImage buffer;
+    protected final DrawableBuffer buffer;
 }

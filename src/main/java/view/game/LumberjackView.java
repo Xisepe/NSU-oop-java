@@ -1,6 +1,7 @@
 package view.game;
 
 import model.asset.LumberjackViewData;
+import model.drawbuffer.DrawableBuffer;
 import model.event.GameEvent;
 import model.event.player.DrawChopLumberjackEvent;
 import model.event.player.DrawStandLumberjackEvent;
@@ -19,7 +20,7 @@ public class LumberjackView extends DefaultView {
     private final Lumberjack player;
     private final LumberjackViewData viewData;
 
-    public LumberjackView(BufferedImage buffer, Lumberjack player, LumberjackViewData viewData) {
+    public LumberjackView(DrawableBuffer buffer, Lumberjack player, LumberjackViewData viewData) {
         super(buffer);
         this.player = player;
         this.viewData = viewData;
@@ -37,14 +38,14 @@ public class LumberjackView extends DefaultView {
     private void drawRight(Graphics2D g, BufferedImage image) {
         g.drawImage(
                 image,
-                buffer.getWidth() - viewData.getStandRight().getWidth() - viewData.getXOffset(),
+                buffer.getBuffer().getWidth() - viewData.getStandRight().getWidth() - viewData.getXOffset(),
                 viewData.getYOffset(),
                 null
         );
     }
 
     private void drawStand() {
-        Graphics2D g = (Graphics2D) buffer.getGraphics();
+        Graphics2D g = (Graphics2D) buffer.getBuffer().getGraphics();
         if (player.getPlayerPosition() == Position.LEFT) {
             drawLeft(g, viewData.getStandLeft());
         } else {
@@ -53,7 +54,7 @@ public class LumberjackView extends DefaultView {
     }
 
     private void drawSwing() {
-        Graphics2D g = (Graphics2D) buffer.getGraphics();
+        Graphics2D g = (Graphics2D) buffer.getBuffer().getGraphics();
         if (player.getPlayerPosition() == Position.LEFT) {
             drawLeft(g, viewData.getSwingLeft());
         } else {
@@ -63,7 +64,7 @@ public class LumberjackView extends DefaultView {
     }
 
     private void drawChop() {
-        Graphics2D g = (Graphics2D) buffer.getGraphics();
+        Graphics2D g = (Graphics2D) buffer.getBuffer().getGraphics();
         if (player.getPlayerPosition() == Position.LEFT) {
             drawLeft(g, viewData.getChopLeft());
         } else {

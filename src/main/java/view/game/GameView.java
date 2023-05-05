@@ -1,30 +1,20 @@
 package view.game;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.RequiredArgsConstructor;
 import model.asset.BackgroundViewData;
+import model.drawbuffer.DrawableBuffer;
 import model.event.GameEvent;
 import model.event.background.DrawBackgroundEvent;
-import model.event.gamestate.ScreenResolutionUpdateEvent;
 import model.event.gamestate.UpdateScreenEvent;
-import model.settings.ScreenResolution;
 import service.observer.GameObserver;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 
+@RequiredArgsConstructor
 public class GameView extends JPanel implements GameObserver {
-    @Getter
-    @Setter
-    private BufferedImage buffer;
+    private final DrawableBuffer buffer;
     private final BackgroundViewData backgroundViewData;
-
-    public GameView(BufferedImage buffer, BackgroundViewData backgroundViewData, ScreenResolution resolution) {
-        this.buffer = buffer;
-        this.backgroundViewData = backgroundViewData;
-        setPreferredSize(new Dimension(resolution.getWidth(), resolution.getHeight()));
-    }
 
     @Override
     protected void paintComponent(Graphics g) {
@@ -33,11 +23,11 @@ public class GameView extends JPanel implements GameObserver {
     }
 
     private void drawFrame(Graphics g) {
-        g.drawImage(buffer, 0, 0, null);
+        g.drawImage(buffer.getBuffer(), 0, 0, null);
     }
 
     private void drawBackground() {
-        Graphics2D g = (Graphics2D) buffer.getGraphics();
+        Graphics2D g = (Graphics2D) buffer.getBuffer().getGraphics();
         g.drawImage(backgroundViewData.getBackground(), 0, 0, null);
     }
 
@@ -48,11 +38,5 @@ public class GameView extends JPanel implements GameObserver {
         } else if (event instanceof UpdateScreenEvent) {
             repaint();
         }
-//        else if (event instanceof ScreenResolutionUpdateEvent) {
-//            setPreferredSize(new Dimension(
-//                    ((ScreenResolutionUpdateEvent) event).getResolution().getWidth(),
-//                    ((ScreenResolutionUpdateEvent) event).getResolution().getHeight()
-//            ));
-//        }
     }
 }

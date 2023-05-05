@@ -1,8 +1,9 @@
-package service.loader;
+package service.loader.sound;
 
 import lombok.SneakyThrows;
 import model.sound.DefaultSound;
 import model.sound.Sound;
+import service.loader.ResourceLoader;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
