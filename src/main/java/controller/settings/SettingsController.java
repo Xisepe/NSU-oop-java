@@ -1,6 +1,5 @@
 package controller.settings;
 
-import lombok.RequiredArgsConstructor;
 import model.event.GameEvent;
 import model.event.settings.SaveSettingsEvent;
 import model.settings.Settings;
@@ -9,13 +8,18 @@ import service.loader.settings.SettingsServiceImpl;
 import service.observer.GameObservable;
 import service.observer.GameObserver;
 
-@RequiredArgsConstructor
 public class SettingsController implements GameObserver {
     private static final String FILENAME = "settings.json";
     private final Settings settings;
-    private int lastScreenResolution = settings.getVideoSettings().getCurrentSettings();
+    private int lastScreenResolution;
     private final SettingsService settingsService = SettingsServiceImpl.getInstance();
     private final GameObservable observable;
+
+    public SettingsController(Settings settings, GameObservable observable) {
+        this.settings = settings;
+        this.observable = observable;
+        lastScreenResolution = settings.getVideoSettings().getCurrentSettings();
+    }
 
     private void saveSettings() {
         settingsService.save(settings, FILENAME);

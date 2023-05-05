@@ -1,7 +1,6 @@
 package controller.game;
 
 import controller.Controller;
-import controller.settings.SettingsController;
 import lombok.RequiredArgsConstructor;
 import model.asset.BackgroundViewData;
 import model.asset.LumberjackViewData;
@@ -19,6 +18,9 @@ import model.state.Action;
 import model.state.Position;
 import model.state.score.Score;
 import model.tree.Tree;
+import service.loader.image.ImageLoader;
+import service.loader.viewdata.LumberjackViewDataLoader;
+import service.loader.viewdata.TreeViewDataLoader;
 import service.observer.GameObserver;
 
 import javax.swing.*;
@@ -110,8 +112,8 @@ public class GameController implements ActionListener, GameObserver {
     private void resizeViews() {
         int newWidth = settings.getVideoSettings().getCurrentScreenResolution().getWidth();
         int newHeight = settings.getVideoSettings().getCurrentScreenResolution().getHeight();
-
-
+        reloadViewData();
+        updateUIManager();
         resizeBuffer(newWidth, newHeight);
         resizeGameView(newWidth, newHeight);
         resizeSettingsView(newWidth, newHeight);
@@ -119,8 +121,38 @@ public class GameController implements ActionListener, GameObserver {
 
     }
 
-    private void reloadViewData() {
+    private void updateUIManager() {
 
+    }
+
+    private void reloadViewData() {
+        String path = settings.getVideoSettings().getCurrentScreenResolution().toString();
+        loadLumberjackViewData(path);
+        loadTreeViewData(path);
+        backgroundViewData.setBackground(ImageLoader.getInstance().load(path + "/background.png"));
+    }
+
+    private void loadLumberjackViewData(String path) {
+        LumberjackViewData load = LumberjackViewDataLoader.getInstance().load(path);
+        lumberjackViewData.setXOffset(load.getXOffset());
+        lumberjackViewData.setYOffset(load.getYOffset());
+        lumberjackViewData.setSwingRight(load.getSwingRight());
+        lumberjackViewData.setSwingLeft(load.getSwingLeft());
+        lumberjackViewData.setStandLeft(load.getStandLeft());
+        lumberjackViewData.setStandRight(load.getStandRight());
+        lumberjackViewData.setChopLeft(load.getChopLeft());
+        lumberjackViewData.setChopRight(load.getChopRight());
+    }
+
+    private void loadTreeViewData(String path) {
+        TreeViewData load = TreeViewDataLoader.getInstance().load(path);
+        treeViewData.setXOffsetTree(load.getXOffsetTree());
+        treeViewData.setYOffsetStump(load.getYOffsetStump());
+        treeViewData.setXOffsetStump(load.getXOffsetStump());
+        treeViewData.setTrunk(load.getTrunk());
+        treeViewData.setStump(load.getStump());
+        treeViewData.setBranchRight(load.getBranchRight());
+        treeViewData.setBranchLeft(load.getBranchLeft());
     }
 
     private void resizeBuffer(int width, int height) {
