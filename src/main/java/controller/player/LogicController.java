@@ -7,10 +7,13 @@ import model.event.background.DrawBackgroundEvent;
 import model.event.player.DrawChopLumberjackEvent;
 import model.event.player.DrawStandLumberjackEvent;
 import model.event.player.DrawSwingLumberjackEvent;
+import model.event.sound.effects.PlayChopEffectSoundEvent;
+import model.event.sound.effects.PlayGameOverEffectSoundEvent;
 import model.event.tree.DrawAllTreeEvent;
 import model.event.tree.DrawChoppedTreeEvent;
 import model.player.Lumberjack;
 import model.state.Action;
+import model.state.score.Score;
 import model.tree.Tree;
 
 @RequiredArgsConstructor
@@ -18,6 +21,7 @@ public class LogicController extends DefaultController {
     private final KeyboardController keyboardController;
     private final Lumberjack player;
     private final Tree tree;
+    private final Score score;
 
     @Override
     public void update() {
@@ -35,9 +39,12 @@ public class LogicController extends DefaultController {
                 chop();
                 if (isDead()) {
                     gameOver();
+                    playGameOverEffectSound();
                     return;
                 }
+                updateScore();
                 drawChop();
+                playChopEffectSound();
                 break;
             }
             case CHOP: {
@@ -80,10 +87,18 @@ public class LogicController extends DefaultController {
         player.chop(tree);
     }
 
+    private void updateScore() {
+        score.increment();
+    }
+
     private void drawChop() {
         drawBackground();
         drawChoppedTree();
         drawChopLumberjack();
+    }
+
+    private void playChopEffectSound() {
+        notifyAll(new PlayChopEffectSoundEvent());
     }
 
     private void stand() {
@@ -102,6 +117,10 @@ public class LogicController extends DefaultController {
 
     public void gameOver() {
         notifyAll(new GameOverEvent());
+    }
+
+    public void playGameOverEffectSound() {
+        notifyAll(new PlayGameOverEffectSoundEvent());
     }
 
     private void drawBackground() {

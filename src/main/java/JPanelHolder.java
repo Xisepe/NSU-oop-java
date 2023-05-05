@@ -1,4 +1,3 @@
-import controller.Controller;
 import model.asset.LumberjackViewData;
 import model.event.GameEvent;
 import model.player.Lumberjack;
@@ -9,18 +8,11 @@ import service.observer.GameObserver;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 
-public class Application extends JFrame implements ActionListener, GameObserver {
+public class JPanelHolder extends JFrame implements GameObserver {
 
-    private static final int TICK_INTERVAL = 17;
-    private final Timer timer = new Timer(TICK_INTERVAL, this);
-    private JPanel currentPanel;
-
-
-    public Application(ScreenResolution resolution) throws HeadlessException {
+    public JPanelHolder(ScreenResolution resolution) throws HeadlessException {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
         setPreferredSize(new Dimension(
@@ -45,11 +37,6 @@ public class Application extends JFrame implements ActionListener, GameObserver 
         EventQueue.invokeLater(()-> {
 
         });
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        gameController.update();
     }
 
     @Override
