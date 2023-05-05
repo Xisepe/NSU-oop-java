@@ -16,8 +16,13 @@ import service.observer.GameObserver;
 public class SoundController implements GameObserver {
     private final GameSoundData soundData;
     private final VolumeSettings volumeSettings;
+    private boolean backgroundWasPlaying;
+    private boolean backgroundIsStopped = true;
 
     public void updateVolume() {
+        if (backgroundIsStopped && backgroundWasPlaying) {
+            playBackground();
+        }
         soundData.getChopEffect().setVolume(
                 volumeSettings.getEffectsPercentage()
         );
@@ -33,10 +38,13 @@ public class SoundController implements GameObserver {
     }
 
     public void playBackground() {
+        backgroundWasPlaying = true;
+        backgroundIsStopped = false;
         soundData.getBackground().setLoop(true);
     }
 
     public void stopBackground() {
+        backgroundIsStopped = true;
         soundData.getBackground().stop();
     }
 
@@ -59,7 +67,12 @@ public class SoundController implements GameObserver {
         }
         if (event instanceof UpdateVolumeSoundEvent) {
             updateVolume();
-        } else if (event instanceof PlayChopEffectSoundEvent) {
+        }
+        if (!volumeSettings.isEnable()) {
+            stopBackground();
+            return;
+        }
+        if (event instanceof PlayChopEffectSoundEvent) {
             playChopEffect();
         } else if (event instanceof PlayBackgroundMusicSoundEvent) {
             playBackground();

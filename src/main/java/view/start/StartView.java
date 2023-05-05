@@ -50,6 +50,6 @@ public class StartView extends JPanel implements GameObservable {
 
     @Override
     public void notifyAll(GameEvent event) {
-        observers.forEach(GameObserver::notify);
+        observers.forEach(o->o.notify(event));
     }
 }

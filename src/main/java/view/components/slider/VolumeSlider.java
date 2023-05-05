@@ -1,4 +1,7 @@
-package view.settings.custom.slider;
+package view.components.slider;
+
+import service.observer.GameObservable;
+import view.components.mouseadapter.FireSoundOnHoverMouseAdapter;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -9,7 +12,7 @@ public class VolumeSlider extends JComponent {
     private final JLabel volumeLabel;
     private final String label;
 
-    public VolumeSlider(int min, int max, int startVolume, String label) {
+    public VolumeSlider(int min, int max, int startVolume, String label, GameObservable observable) {
         this.label = label;
 
         setLayout(new BorderLayout(10, 10));
@@ -25,6 +28,7 @@ public class VolumeSlider extends JComponent {
         add(volumeLabel, BorderLayout.CENTER);
         setVisible(true);
         setFocusable(true);
+        addMouseListener(new FireSoundOnHoverMouseAdapter(observable));
     }
 
     private void onSlide(ChangeEvent event) {

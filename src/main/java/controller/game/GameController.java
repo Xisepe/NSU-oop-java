@@ -3,10 +3,14 @@ package controller.game;
 import controller.Controller;
 import controller.settings.SettingsController;
 import lombok.RequiredArgsConstructor;
+import model.asset.BackgroundViewData;
+import model.asset.LumberjackViewData;
+import model.asset.TreeViewData;
 import model.drawbuffer.DrawableBuffer;
 import model.event.GameEvent;
 import model.event.game.ExitFromGameEvent;
 import model.event.game.GameControlsEvent;
+import model.event.game.ResizeViewsGameEvent;
 import model.event.game.changescreen.OpenSettingsEvent;
 import model.event.game.changescreen.StartGameEvent;
 import model.player.Lumberjack;
@@ -18,6 +22,7 @@ import model.tree.Tree;
 import service.observer.GameObserver;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -38,10 +43,14 @@ public class GameController implements ActionListener, GameObserver {
     private DrawableBuffer buffer;
     private final JFrame panelHolder;
     private final JPanel gameView;
+    private final JPanel settingsView;
+
+    private final LumberjackViewData lumberjackViewData;
+    private final TreeViewData treeViewData;
+    private final BackgroundViewData backgroundViewData;
 
     //controller
     private final Controller logicController;
-    private final SettingsController settingsController;
 
 
     private void startGame() {
@@ -58,7 +67,7 @@ public class GameController implements ActionListener, GameObserver {
     }
 
     private void openSettings() {
-//        replacePanelOnHolder();
+        replacePanelOnHolder(settingsView);
     }
 
     private void exitFromGame() {
@@ -98,6 +107,41 @@ public class GameController implements ActionListener, GameObserver {
         logicController.update();
     }
 
+    private void resizeViews() {
+        int newWidth = settings.getVideoSettings().getCurrentScreenResolution().getWidth();
+        int newHeight = settings.getVideoSettings().getCurrentScreenResolution().getHeight();
+
+
+        resizeBuffer(newWidth, newHeight);
+        resizeGameView(newWidth, newHeight);
+        resizeSettingsView(newWidth, newHeight);
+        resizePanelHolder(newWidth, newHeight);
+
+    }
+
+    private void reloadViewData() {
+
+    }
+
+    private void resizeBuffer(int width, int height) {
+        buffer.resize(width, height);
+    }
+
+    private void resizeGameView(int width, int height) {
+        gameView.setPreferredSize(new Dimension(width, height));
+        gameView.repaint();
+    }
+
+    private void resizeSettingsView(int width, int height) {
+        settingsView.setPreferredSize(new Dimension(width, height));
+        settingsView.repaint();
+    }
+
+    private void resizePanelHolder(int width, int height) {
+        panelHolder.setPreferredSize(new Dimension(width, height));
+        panelHolder.revalidate();
+        panelHolder.repaint();
+    }
 
 
     @Override
@@ -105,6 +149,7 @@ public class GameController implements ActionListener, GameObserver {
 
     }
 
+    //todo game over
     @Override
     public void notify(GameEvent event) {
         if (!(event instanceof GameControlsEvent)) {
@@ -113,9 +158,11 @@ public class GameController implements ActionListener, GameObserver {
         if (event instanceof StartGameEvent) {
             startGame();
         } else if (event instanceof OpenSettingsEvent) {
-
+            openSettings();
         } else if (event instanceof ExitFromGameEvent) {
             exitFromGame();
+        } else if (event instanceof ResizeViewsGameEvent) {
+
         }
     }
 }
