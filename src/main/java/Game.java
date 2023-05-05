@@ -12,6 +12,8 @@ import model.player.Lumberjack;
 import model.settings.Settings;
 import model.state.score.Score;
 import model.tree.Tree;
+import service.dependency.resolver.DependencyResolver;
+import service.dependency.resolver.GameDependencyResolver;
 import service.loader.image.ImageLoader;
 import service.loader.settings.SettingsServiceImpl;
 import service.loader.sound.SoundLoader;
@@ -74,19 +76,36 @@ public class Game {
             player, tree, score, settings, buffer, panelHolder, gameView, settingsView, menuView,
             lumberjackViewData, treeViewData, backgroundViewData, logicController
     );
+    //services
+    DependencyResolver dependencyResolver = new GameDependencyResolver(
+            gameController, soundController, logicController, keyboardController, settingsController,
+            lumberjackView, treeView, menuView, settingsView, gameView
+    );
 
     private void resolveDependencies() {
         resolveLogicControllerDependencies();
         resolveMenuViewDependencies();
+        resolveSettingsViewDependencies();
+        resolveGameViewDependencies();
     }
+
     private void resolveLogicControllerDependencies() {
         connectViewsToLogicController();
         connectSoundToGameObservable(logicController);
         connectGameControllerToGameObservable(logicController);
     }
+
     private void resolveMenuViewDependencies() {
         connectGameControllerToGameObservable(menuView);
         connectSoundToGameObservable(menuView);
+    }
+
+    private void resolveSettingsViewDependencies() {
+        settingsView.addObserver(settingsController);
+    }
+
+    private void resolveGameViewDependencies() {
+        connectKeyboardControllerToGameView();
     }
 
     private void connectViewsToLogicController() {
@@ -94,9 +113,15 @@ public class Game {
         logicController.addObserver(lumberjackView);
         logicController.addObserver(treeView);
     }
+
+    private void connectKeyboardControllerToGameView() {
+        gameView.addKeyListener(keyboardController);
+    }
+
     private void connectGameControllerToGameObservable(GameObservable observable) {
         observable.addObserver(gameController);
     }
+
     private void connectSoundToGameObservable(GameObservable observable) {
         observable.addObserver(soundController);
     }
@@ -106,7 +131,7 @@ public class Game {
         game.resolveDependencies();
         EventQueue.invokeLater(() -> {
             game.panelHolder.setVisible(true);
-            game.panelHolder.setPreferredSize(new Dimension(540,888));
+            game.panelHolder.setPreferredSize(new Dimension(540, 888));
             game.panelHolder.add(game.menuView);
             game.panelHolder.pack();
         });
