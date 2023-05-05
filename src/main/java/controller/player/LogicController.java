@@ -2,7 +2,7 @@ package controller.player;
 
 import controller.DefaultController;
 import lombok.RequiredArgsConstructor;
-import model.event.gamestate.GameOverEvent;
+import model.event.game.changescreen.GameOverEvent;
 import model.event.background.DrawBackgroundEvent;
 import model.event.player.DrawChopLumberjackEvent;
 import model.event.player.DrawStandLumberjackEvent;
@@ -115,11 +115,11 @@ public class LogicController extends DefaultController {
         return player.isDead();
     }
 
-    public void gameOver() {
+    private void gameOver() {
         notifyAll(new GameOverEvent());
     }
 
-    public void playGameOverEffectSound() {
+    private void playGameOverEffectSound() {
         notifyAll(new PlayGameOverEffectSoundEvent());
     }
 

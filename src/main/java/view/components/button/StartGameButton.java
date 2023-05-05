@@ -1,6 +1,6 @@
 package view.components.button;
 
-import model.event.gamestate.StartGameEvent;
+import model.event.game.changescreen.StartGameEvent;
 import service.observer.GameObservable;
 
 import java.awt.event.ActionEvent;

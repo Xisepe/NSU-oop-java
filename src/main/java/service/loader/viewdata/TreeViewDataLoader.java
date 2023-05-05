@@ -31,9 +31,9 @@ public class TreeViewDataLoader implements ResourceLoader<TreeViewData> {
         treeViewData.setBranchRight(imageLoader.load(name+"/branch_right.png"));
         Properties properties = new Properties();
         properties.load(this.getClass().getClassLoader().getResourceAsStream("sprites/"+name+"/tree.properties"));
-        treeViewData.setXOffsetTree(Integer.parseInt("xOffsetTree"));
-        treeViewData.setYOffsetStump(Integer.parseInt("yOffsetStump"));
-        treeViewData.setXOffsetTree(Integer.parseInt("xOffsetStump"));
+        treeViewData.setXOffsetTree(Integer.parseInt(properties.getProperty("xOffsetTree")));
+        treeViewData.setYOffsetStump(Integer.parseInt(properties.getProperty("yOffsetStump")));
+        treeViewData.setXOffsetTree(Integer.parseInt(properties.getProperty("xOffsetStump")));
         return treeViewData;
     }
 }

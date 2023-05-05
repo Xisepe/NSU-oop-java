@@ -1,0 +1,28 @@
+{
+  "videoSettings": {
+    "currentSettings": 2,
+    "available": [
+      {
+        "width": 270,
+        "height": 444
+      },
+      {
+        "width": 324,
+        "height": 533
+      },
+      {
+        "width": 540,
+        "height": 888
+      }
+    ]
+  },
+  "volumeSettings": {
+    "enable": true,
+    "backgroundMusicPercentage": 50,
+    "effectsPercentage": 50
+  },
+  "keyboardSettings": {
+    "chopLeft": 65,
+    "chopRight": 68
+  }
+}

@@ -1,7 +1,7 @@
 package view;
 
 import lombok.RequiredArgsConstructor;
-import model.drawbuffer.DrawableBuffer;
+import model.draw.buffer.DrawableBuffer;
 import service.observer.GameObserver;
 
 @RequiredArgsConstructor

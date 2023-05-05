@@ -5,13 +5,15 @@ import lombok.RequiredArgsConstructor;
 import model.asset.BackgroundViewData;
 import model.asset.LumberjackViewData;
 import model.asset.TreeViewData;
-import model.drawbuffer.DrawableBuffer;
+import model.draw.buffer.DrawableBuffer;
 import model.event.GameEvent;
 import model.event.game.ExitFromGameEvent;
 import model.event.game.GameControlsEvent;
 import model.event.game.ResizeViewsGameEvent;
+import model.event.game.changescreen.MenuEvent;
 import model.event.game.changescreen.OpenSettingsEvent;
 import model.event.game.changescreen.StartGameEvent;
+import model.event.game.changescreen.GameOverEvent;
 import model.player.Lumberjack;
 import model.settings.Settings;
 import model.state.Action;
@@ -28,8 +30,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-//todo: implement ObservableController/ObserverController
-
 @RequiredArgsConstructor
 public class GameController implements ActionListener, GameObserver {
     //model
@@ -42,10 +42,11 @@ public class GameController implements ActionListener, GameObserver {
     private final Timer gameLoop = new Timer(TICK_INTERVAL, this);
 
     //view
-    private DrawableBuffer buffer;
+    private final DrawableBuffer buffer;
     private final JFrame panelHolder;
     private final JPanel gameView;
     private final JPanel settingsView;
+    private final JPanel menuView;
 
     private final LumberjackViewData lumberjackViewData;
     private final TreeViewData treeViewData;
@@ -70,6 +71,10 @@ public class GameController implements ActionListener, GameObserver {
 
     private void openSettings() {
         replacePanelOnHolder(settingsView);
+    }
+
+    private void openMenu() {
+        replacePanelOnHolder(menuView);
     }
 
     private void exitFromGame() {
@@ -113,12 +118,11 @@ public class GameController implements ActionListener, GameObserver {
         int newWidth = settings.getVideoSettings().getCurrentScreenResolution().getWidth();
         int newHeight = settings.getVideoSettings().getCurrentScreenResolution().getHeight();
         reloadViewData();
-        updateUIManager();
         resizeBuffer(newWidth, newHeight);
         resizeGameView(newWidth, newHeight);
         resizeSettingsView(newWidth, newHeight);
         resizePanelHolder(newWidth, newHeight);
-
+        updateUIManager();
     }
 
     private void updateUIManager() {
@@ -187,14 +191,18 @@ public class GameController implements ActionListener, GameObserver {
         if (!(event instanceof GameControlsEvent)) {
             return;
         }
-        if (event instanceof StartGameEvent) {
+        if (event instanceof MenuEvent) {
+            openMenu();
+        } else if (event instanceof StartGameEvent) {
             startGame();
+        } else if (event instanceof GameOverEvent) {
+            gameOver();
         } else if (event instanceof OpenSettingsEvent) {
             openSettings();
         } else if (event instanceof ExitFromGameEvent) {
             exitFromGame();
         } else if (event instanceof ResizeViewsGameEvent) {
-
+            resizeViews();
         }
     }
 }

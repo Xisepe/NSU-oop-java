@@ -2,10 +2,9 @@ package view.game;
 
 import lombok.RequiredArgsConstructor;
 import model.asset.BackgroundViewData;
-import model.drawbuffer.DrawableBuffer;
+import model.draw.buffer.DrawableBuffer;
 import model.event.GameEvent;
 import model.event.background.DrawBackgroundEvent;
-import model.event.gamestate.UpdateScreenEvent;
 import service.observer.GameObserver;
 
 import javax.swing.*;
@@ -35,8 +34,6 @@ public class GameView extends JPanel implements GameObserver {
     public void notify(GameEvent event) {
         if (event instanceof DrawBackgroundEvent) {
             drawBackground();
-        } else if (event instanceof UpdateScreenEvent) {
-            repaint();
         }
     }
 }

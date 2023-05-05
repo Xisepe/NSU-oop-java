@@ -1,7 +1,7 @@
 package view.game;
 
 import model.asset.LumberjackViewData;
-import model.drawbuffer.DrawableBuffer;
+import model.draw.buffer.DrawableBuffer;
 import model.event.GameEvent;
 import model.event.player.DrawChopLumberjackEvent;
 import model.event.player.DrawStandLumberjackEvent;

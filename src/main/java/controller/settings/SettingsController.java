@@ -1,6 +1,7 @@
 package controller.settings;
 
 import model.event.GameEvent;
+import model.event.game.ResizeViewsGameEvent;
 import model.event.settings.SaveSettingsEvent;
 import model.settings.Settings;
 import service.loader.settings.SettingsService;
@@ -25,7 +26,7 @@ public class SettingsController implements GameObserver {
         settingsService.save(settings, FILENAME);
         if (lastScreenResolution != settings.getVideoSettings().getCurrentSettings()) {
             lastScreenResolution = settings.getVideoSettings().getCurrentSettings();
-            observable.notifyAll();
+            observable.notifyAll(new ResizeViewsGameEvent());
         }
     }
 

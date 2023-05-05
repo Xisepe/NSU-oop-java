@@ -1,8 +1,7 @@
 package view.game;
 
-import lombok.RequiredArgsConstructor;
 import model.asset.TreeViewData;
-import model.drawbuffer.DrawableBuffer;
+import model.draw.buffer.DrawableBuffer;
 import model.event.GameEvent;
 import model.event.tree.DrawChoppedTreeEvent;
 import model.event.tree.DrawAllTreeEvent;

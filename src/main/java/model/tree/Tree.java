@@ -12,7 +12,7 @@ public class Tree {
     private int currentIndex = -1;
     @Getter
     @Setter
-    private int visibleAmount = 5;
+    private int visibleAmount = 6;
 
     public Tree() {
         createTreeBlocks();
