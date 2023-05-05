@@ -1,4 +1,4 @@
-package view;
+package view.game;
 
 import model.asset.TreeViewData;
 import model.event.GameEvent;
@@ -7,6 +7,7 @@ import model.event.tree.DrawAllTreeEvent;
 import model.event.tree.TreeEvent;
 import model.tree.Tree;
 import model.tree.TreeBlock;
+import view.DefaultView;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
