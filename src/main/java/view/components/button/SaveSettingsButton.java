@@ -4,7 +4,6 @@ import model.event.settings.SaveSettingsEvent;
 import service.observer.GameObservable;
 
 import java.awt.event.ActionEvent;
-import java.util.function.Consumer;
 
 public class SaveSettingsButton extends GameButton {
     public static final String TITLE = "SAVE";

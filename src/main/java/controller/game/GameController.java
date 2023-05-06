@@ -1,7 +1,11 @@
 package controller.game;
 
-import controller.Controller;
+import controller.player.KeyboardController;
+import controller.player.LogicController;
+import controller.settings.SettingsController;
+import controller.sound.SoundController;
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 import model.asset.BackgroundViewData;
 import model.asset.LumberjackViewData;
 import model.asset.TreeViewData;
@@ -10,25 +14,31 @@ import model.event.GameEvent;
 import model.event.game.ExitFromGameEvent;
 import model.event.game.GameControlsEvent;
 import model.event.game.ResizeViewsGameEvent;
+import model.event.game.changescreen.GameOverEvent;
 import model.event.game.changescreen.MenuEvent;
 import model.event.game.changescreen.OpenSettingsEvent;
 import model.event.game.changescreen.StartGameEvent;
-import model.event.game.changescreen.GameOverEvent;
 import model.player.Lumberjack;
 import model.settings.Settings;
 import model.state.Action;
 import model.state.Position;
 import model.state.score.Score;
 import model.tree.Tree;
+import service.dependency.resolver.DependencyResolver;
+import service.dependency.resolver.GameDependencyResolver;
+import service.loader.font.FontLoader;
 import service.loader.image.ImageLoader;
 import service.loader.viewdata.LumberjackViewDataLoader;
 import service.loader.viewdata.TreeViewDataLoader;
 import service.observer.GameObserver;
+import view.game.LumberjackView;
+import view.game.TreeView;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Properties;
 
 @RequiredArgsConstructor
 public class GameController implements ActionListener, GameObserver {
@@ -41,6 +51,8 @@ public class GameController implements ActionListener, GameObserver {
     private static final int TICK_INTERVAL = 17;
     private final Timer gameLoop = new Timer(TICK_INTERVAL, this);
 
+    private boolean gamePLaying;
+
     //view
     private final DrawableBuffer buffer;
     private final JFrame panelHolder;
@@ -48,15 +60,30 @@ public class GameController implements ActionListener, GameObserver {
     private final JPanel settingsView;
     private final JPanel menuView;
 
+    private final LumberjackView lumberjackView;
+    private final TreeView treeView;
+
     private final LumberjackViewData lumberjackViewData;
     private final TreeViewData treeViewData;
     private final BackgroundViewData backgroundViewData;
 
     //controller
-    private final Controller logicController;
+    private final LogicController logicController;
+    private final SoundController soundController;
+    private final SettingsController settingsController;
+    private final KeyboardController keyboardController;
 
+
+    private void resolveDependencies() {
+        DependencyResolver dependencyResolver = new GameDependencyResolver(
+                this, soundController, logicController, keyboardController, settingsController,
+                lumberjackView, treeView, menuView, settingsView, gameView
+        );
+        dependencyResolver.resolveDependencies();
+    }
 
     private void startGame() {
+        gamePLaying = true;
         initializePlayer();
         initializeTree();
         initializeScore();
@@ -67,17 +94,21 @@ public class GameController implements ActionListener, GameObserver {
 
     private void gameOver() {
         stopGameLoop();
+        exitFromGame();
     }
 
     private void openSettings() {
+        gamePLaying = false;
         replacePanelOnHolder(settingsView);
     }
 
     private void openMenu() {
+        gamePLaying = false;
         replacePanelOnHolder(menuView);
     }
 
     private void exitFromGame() {
+        gamePLaying = false;
         System.exit(0);
     }
 
@@ -86,6 +117,7 @@ public class GameController implements ActionListener, GameObserver {
         panelHolder.getContentPane().add(panel);
         panelHolder.revalidate();
         panelHolder.repaint();
+        panelHolder.pack();
     }
 
     private void startGameLoop() {
@@ -114,19 +146,68 @@ public class GameController implements ActionListener, GameObserver {
         logicController.update();
     }
 
-    private void resizeViews() {
-        int newWidth = settings.getVideoSettings().getCurrentScreenResolution().getWidth();
-        int newHeight = settings.getVideoSettings().getCurrentScreenResolution().getHeight();
-        reloadViewData();
-        resizeBuffer(newWidth, newHeight);
-        resizeGameView(newWidth, newHeight);
-        resizeSettingsView(newWidth, newHeight);
-        resizePanelHolder(newWidth, newHeight);
-        updateUIManager();
+    public void start() {
+        resolveDependencies();
+        resizeViews();
+        replacePanelOnHolder(menuView);
+        soundController.updateVolume();
+        soundController.playBackground();
     }
 
-    private void updateUIManager() {
+    private void resizeViews()
+    {
+        int newWidth = settings.getVideoSettings().getCurrentScreenResolution().getWidth();
+        int newHeight = settings.getVideoSettings().getCurrentScreenResolution().getHeight();
+        Dimension newSize = new Dimension(newWidth, newHeight);
+        reloadViewData();
+        resizeBuffer(newWidth, newHeight);
+        updateUIManager();
+        resizeComponent(newSize, gameView);
+        resizeComponent(newSize, settingsView);
+        resizeComponent(newSize, panelHolder);
+    }
 
+    @SneakyThrows
+    private void updateUIManager() {
+        Properties properties = new Properties();
+        properties.load(this.getClass().getClassLoader().getResourceAsStream("font/font.properties"));
+        updateFontSize(
+                Integer.parseInt(properties.getProperty(settings.getVideoSettings().getCurrentScreenResolution() + ".menuView")),
+                menuView
+        );
+        updateFontSize(
+                Integer.parseInt(properties.getProperty(settings.getVideoSettings().getCurrentScreenResolution() + ".gameView")),
+                gameView
+        );
+        updateFontSize(
+                Integer.parseInt(properties.getProperty(settings.getVideoSettings().getCurrentScreenResolution() + ".settingsView")),
+                settingsView
+        );
+    }
+
+    private void updateFontSize(float fontSize, Component component) {
+        Font font = FontLoader.getInstance().load("arcadeclassic.regular.ttf").deriveFont(fontSize);
+        GraphicsEnvironment.getLocalGraphicsEnvironment().registerFont(font);
+        UIManager.put("Button.font", font);
+        UIManager.put("Label.font", font);
+        UIManager.put("TextField.font", font);
+        UIManager.put("TextArea.font", font);
+        UIManager.put("ComboBox.font", font);
+        UIManager.put("CheckBox.font", font);
+        UIManager.put("RadioButton.font", font);
+        UIManager.put("TabbedPane.font", font);
+        UIManager.put("Table.font", font);
+        UIManager.put("Tree.font", font);
+        setFontForAllChildComponents(component, font);
+    }
+    private void setFontForAllChildComponents(Component component, Font font) {
+        component.setFont(font);
+        if (component instanceof Container) {
+            Component[] children = ((Container) component).getComponents();
+            for (Component child : children) {
+                setFontForAllChildComponents(child, font);
+            }
+        }
     }
 
     private void reloadViewData() {
@@ -163,29 +244,22 @@ public class GameController implements ActionListener, GameObserver {
         buffer.resize(width, height);
     }
 
-    private void resizeGameView(int width, int height) {
-        gameView.setPreferredSize(new Dimension(width, height));
-        gameView.repaint();
+    private void resizeComponent(Dimension newSize, Component panel) {
+        panel.setPreferredSize(newSize);
+        panel.invalidate();
+        panel.revalidate();
+        panel.repaint();
     }
-
-    private void resizeSettingsView(int width, int height) {
-        settingsView.setPreferredSize(new Dimension(width, height));
-        settingsView.repaint();
-    }
-
-    private void resizePanelHolder(int width, int height) {
-        panelHolder.setPreferredSize(new Dimension(width, height));
-        panelHolder.revalidate();
-        panelHolder.repaint();
-    }
-
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        if (!gamePLaying) {
+            stopGameLoop();
+            return;
+        }
+        updateGameLoop();
     }
 
-    //todo game over
     @Override
     public void notify(GameEvent event) {
         if (!(event instanceof GameControlsEvent)) {

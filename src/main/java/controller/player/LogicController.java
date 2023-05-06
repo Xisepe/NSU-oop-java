@@ -28,6 +28,7 @@ public class LogicController extends DefaultController {
         switch (player.getAction()) {
             case STAND: {
                 if (!isChop()) {
+                    drawStand();
                     return;
                 }
                 movePlayer();
@@ -55,6 +56,8 @@ public class LogicController extends DefaultController {
         }
 
     }
+
+
 
     private void movePlayer() {
         if (keyboardController.isChopRight() && !keyboardController.isChopLeft()) {

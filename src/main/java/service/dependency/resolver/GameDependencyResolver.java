@@ -13,6 +13,8 @@ import view.game.TreeView;
 import view.menu.MenuView;
 import view.settings.SettingsView;
 
+import javax.swing.*;
+
 @RequiredArgsConstructor
 public class GameDependencyResolver implements DependencyResolver {
     private final GameController gameController;
@@ -23,9 +25,9 @@ public class GameDependencyResolver implements DependencyResolver {
 
     private final LumberjackView lumberjackView;
     private final TreeView treeView;
-    private final MenuView menuView;
-    private final SettingsView settingsView;
-    private final GameView gameView;
+    private final JPanel menuView;
+    private final JPanel settingsView;
+    private final JPanel gameView;
 
     @Override
     public void resolveDependencies() {
@@ -42,12 +44,12 @@ public class GameDependencyResolver implements DependencyResolver {
     }
 
     private void resolveMenuViewDependencies() {
-        connectGameControllerToGameObservable(menuView);
-        connectSoundToGameObservable(menuView);
+        connectGameControllerToGameObservable((MenuView) menuView);
+        connectSoundToGameObservable((MenuView) menuView);
     }
 
     private void resolveSettingsViewDependencies() {
-        settingsView.addObserver(settingsController);
+        ((SettingsView) settingsView).addObserver(settingsController);
     }
 
     private void resolveGameViewDependencies() {
@@ -55,7 +57,7 @@ public class GameDependencyResolver implements DependencyResolver {
     }
 
     private void connectViewsToLogicController() {
-        logicController.addObserver(gameView);
+        logicController.addObserver((GameView) gameView);
         logicController.addObserver(lumberjackView);
         logicController.addObserver(treeView);
     }

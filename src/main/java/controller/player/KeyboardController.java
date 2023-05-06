@@ -26,6 +26,7 @@ public class KeyboardController implements KeyListener {
         } else if (e.getKeyCode() == settings.getChopLeft()) {
             chopLeft = true;
         }
+        System.out.println("Pressed");
     }
 
     @Override
@@ -35,5 +36,6 @@ public class KeyboardController implements KeyListener {
         } else if (e.getKeyCode() == settings.getChopLeft()) {
             chopLeft = false;
         }
+        System.out.println("Released");
     }
 }

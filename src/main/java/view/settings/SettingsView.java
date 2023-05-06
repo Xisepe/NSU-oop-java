@@ -52,7 +52,9 @@ public class SettingsView extends JPanel implements GameObservable {
         return new KeyBinder(
                 label,
                 KeyEvent.getKeyText(settings),
-                this);
+                this){{
+                    setKeyCode(settings);
+        }};
     }
 
     private JCheckBox initializeDisableSound(Settings settings) {
@@ -122,10 +124,8 @@ public class SettingsView extends JPanel implements GameObservable {
     }
 
     private void updateVideo() {
-        String[] wh = ((String) Objects.requireNonNull(videoDropMenu.getSelectedItem())).split("x");
         VideoSettings videoSettings = settings.getVideoSettings();
-        videoSettings.getCurrentScreenResolution().setWidth(Integer.parseInt(wh[0]));
-        videoSettings.getCurrentScreenResolution().setHeight(Integer.parseInt(wh[1]));
+        videoSettings.setCurrentSettings(videoDropMenu.getSelectedIndex());
     }
 
     private void updateVolume() {

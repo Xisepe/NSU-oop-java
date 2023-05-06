@@ -8,6 +8,7 @@ import model.event.sound.background.PlayBackgroundMusicSoundEvent;
 import model.event.sound.background.StopBackgroundMusicSoundEvent;
 import model.event.sound.config.UpdateVolumeSoundEvent;
 import model.event.sound.effects.PlayChopEffectSoundEvent;
+import model.event.sound.effects.PlayGameOverEffectSoundEvent;
 import model.event.sound.effects.PlayHoverEffectSoundEvent;
 import model.settings.VolumeSettings;
 import service.observer.GameObserver;
@@ -62,9 +63,6 @@ public class SoundController implements GameObserver {
 
     @Override
     public void notify(GameEvent event) {
-        if (!(event instanceof SoundEvent)) {
-            return;
-        }
         if (event instanceof UpdateVolumeSoundEvent) {
             updateVolume();
         }
@@ -80,7 +78,7 @@ public class SoundController implements GameObserver {
             stopBackground();
         } else if (event instanceof PlayHoverEffectSoundEvent) {
             playHoverEffect();
-        } else {
+        } else if (event instanceof PlayGameOverEffectSoundEvent) {
             playGameOverEffect();
         }
     }

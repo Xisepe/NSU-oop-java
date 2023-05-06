@@ -9,11 +9,13 @@ import model.asset.LumberjackViewData;
 import model.asset.TreeViewData;
 import model.draw.buffer.DrawableBuffer;
 import model.player.Lumberjack;
+import model.settings.ScreenResolution;
 import model.settings.Settings;
 import model.state.score.Score;
 import model.tree.Tree;
 import service.dependency.resolver.DependencyResolver;
 import service.dependency.resolver.GameDependencyResolver;
+import service.loader.font.FontLoader;
 import service.loader.image.ImageLoader;
 import service.loader.settings.SettingsServiceImpl;
 import service.loader.sound.SoundLoader;
@@ -26,6 +28,7 @@ import view.game.TreeView;
 import view.menu.MenuView;
 import view.settings.SettingsView;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
@@ -35,13 +38,9 @@ public class Game {
     private final Lumberjack player = new Lumberjack();
     private final Tree tree = new Tree();
     private final Score score = new Score();
-    private final LumberjackViewData lumberjackViewData
-            = LumberjackViewDataLoader.getInstance().load(settings.getVideoSettings().getCurrentScreenResolution().toString());
-    private final TreeViewData treeViewData
-            = TreeViewDataLoader.getInstance().load(settings.getVideoSettings().getCurrentScreenResolution().toString());
-    private final BackgroundViewData backgroundViewData = new BackgroundViewData() {{
-        setBackground(ImageLoader.getInstance().load(settings.getVideoSettings().getCurrentScreenResolution().toString() + "/background.png"));
-    }};
+    private final LumberjackViewData lumberjackViewData = new LumberjackViewData();
+    private final TreeViewData treeViewData = new TreeViewData();
+    private final BackgroundViewData backgroundViewData = new BackgroundViewData();
     private final DrawableBuffer buffer = new DrawableBuffer() {{
         setBuffer(new BufferedImage(
                 settings.getVideoSettings().getCurrentScreenResolution().getWidth(),
@@ -73,67 +72,20 @@ public class Game {
     private final SettingsController settingsController = new SettingsController(settings, logicController);
     private final SoundController soundController = new SoundController(gameSoundData, settings.getVolumeSettings());
     private final GameController gameController = new GameController(
-            player, tree, score, settings, buffer, panelHolder, gameView, settingsView, menuView,
-            lumberjackViewData, treeViewData, backgroundViewData, logicController
-    );
-    //services
-    DependencyResolver dependencyResolver = new GameDependencyResolver(
-            gameController, soundController, logicController, keyboardController, settingsController,
-            lumberjackView, treeView, menuView, settingsView, gameView
+            player, tree, score, settings, buffer, panelHolder, gameView, settingsView, menuView, lumberjackView, treeView,
+            lumberjackViewData, treeViewData, backgroundViewData, logicController, soundController, settingsController,
+            keyboardController
     );
 
-    private void resolveDependencies() {
-        resolveLogicControllerDependencies();
-        resolveMenuViewDependencies();
-        resolveSettingsViewDependencies();
-        resolveGameViewDependencies();
-    }
-
-    private void resolveLogicControllerDependencies() {
-        connectViewsToLogicController();
-        connectSoundToGameObservable(logicController);
-        connectGameControllerToGameObservable(logicController);
-    }
-
-    private void resolveMenuViewDependencies() {
-        connectGameControllerToGameObservable(menuView);
-        connectSoundToGameObservable(menuView);
-    }
-
-    private void resolveSettingsViewDependencies() {
-        settingsView.addObserver(settingsController);
-    }
-
-    private void resolveGameViewDependencies() {
-        connectKeyboardControllerToGameView();
-    }
-
-    private void connectViewsToLogicController() {
-        logicController.addObserver(gameView);
-        logicController.addObserver(lumberjackView);
-        logicController.addObserver(treeView);
-    }
-
-    private void connectKeyboardControllerToGameView() {
-        gameView.addKeyListener(keyboardController);
-    }
-
-    private void connectGameControllerToGameObservable(GameObservable observable) {
-        observable.addObserver(gameController);
-    }
-
-    private void connectSoundToGameObservable(GameObservable observable) {
-        observable.addObserver(soundController);
+    private void start() {
+        gameController.start();
     }
 
     public static void main(String[] args) {
         Game game = new Game();
-        game.resolveDependencies();
+        game.start();
         EventQueue.invokeLater(() -> {
             game.panelHolder.setVisible(true);
-            game.panelHolder.setPreferredSize(new Dimension(540, 888));
-            game.panelHolder.add(game.menuView);
-            game.panelHolder.pack();
         });
     }
 }

@@ -48,7 +48,7 @@ public class TreeView extends DefaultView {
         for (int i = 0; i < number; i++) {
             drawTreeBlock(
                     graphics2D,
-                    tree.getVisibleBlockAt(tree.getVisibleAmount() - i),
+                    tree.getVisibleBlockAt(tree.getVisibleAmount() - i - 1),
                     i
                     );
         }
