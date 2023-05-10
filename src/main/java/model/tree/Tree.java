@@ -9,7 +9,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Tree {
     private static final int CAPACITY = 512;
     private final TreeBlock[] blocks = new TreeBlock[CAPACITY];
-    private int currentIndex = -1;
+    private int currentIndex = 0;
     @Getter
     @Setter
     private int visibleAmount = 6;
@@ -21,7 +21,7 @@ public class Tree {
 
     public void initializeTreeBlocks() {
         initializeTreeBlocks(0, CAPACITY);
-        currentIndex = -1;
+        currentIndex = 0;
     }
 
     public TreeBlock getVisibleBlockAt(int position) {
@@ -35,12 +35,11 @@ public class Tree {
         return blocks[currentIndex];
     }
 
-    public TreeBlock nextTreeBlock() {
+    public void increment() {
         updateCurrentIndex();
         if (isUpdateRequired()) {
             updateTreeBlocks();
         }
-        return getCurrentTreeBlock();
     }
 
     private void updateCurrentIndex() {

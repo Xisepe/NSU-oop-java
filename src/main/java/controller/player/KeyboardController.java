@@ -15,6 +15,7 @@ public class KeyboardController implements KeyListener {
     @Getter
     private boolean chopRight;
 
+
     @Override
     public void keyTyped(KeyEvent e) {
     }

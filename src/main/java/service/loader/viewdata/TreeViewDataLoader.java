@@ -33,7 +33,7 @@ public class TreeViewDataLoader implements ResourceLoader<TreeViewData> {
         properties.load(this.getClass().getClassLoader().getResourceAsStream("sprites/"+name+"/tree.properties"));
         treeViewData.setXOffsetTree(Integer.parseInt(properties.getProperty("xOffsetTree")));
         treeViewData.setYOffsetStump(Integer.parseInt(properties.getProperty("yOffsetStump")));
-        treeViewData.setXOffsetTree(Integer.parseInt(properties.getProperty("xOffsetStump")));
+        treeViewData.setXOffsetStump(Integer.parseInt(properties.getProperty("xOffsetStump")));
         return treeViewData;
     }
 }

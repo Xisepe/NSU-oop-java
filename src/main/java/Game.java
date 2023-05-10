@@ -9,26 +9,17 @@ import model.asset.LumberjackViewData;
 import model.asset.TreeViewData;
 import model.draw.buffer.DrawableBuffer;
 import model.player.Lumberjack;
-import model.settings.ScreenResolution;
 import model.settings.Settings;
 import model.state.score.Score;
 import model.tree.Tree;
-import service.dependency.resolver.DependencyResolver;
-import service.dependency.resolver.GameDependencyResolver;
-import service.loader.font.FontLoader;
-import service.loader.image.ImageLoader;
 import service.loader.settings.SettingsServiceImpl;
 import service.loader.sound.SoundLoader;
-import service.loader.viewdata.LumberjackViewDataLoader;
-import service.loader.viewdata.TreeViewDataLoader;
-import service.observer.GameObservable;
 import view.game.GameView;
 import view.game.LumberjackView;
 import view.game.TreeView;
 import view.menu.MenuView;
 import view.settings.SettingsView;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 

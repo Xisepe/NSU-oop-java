@@ -12,10 +12,11 @@ public class Lumberjack {
     private Action action = Action.STAND;
 
     public void chop(Tree tree) {
-        tree.nextTreeBlock().setChopped(true);
+        tree.getCurrentTreeBlock().setChopped(true);
         if (playerPosition.equals(tree.getCurrentTreeBlock().getBranchPosition())) {
             dead = true;
         }
+        tree.increment();
     }
 
     public void moveLeft() {

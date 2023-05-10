@@ -48,7 +48,7 @@ public class GameController implements ActionListener, GameObserver {
     private final Score score;
     private final Settings settings;
 
-    private static final int TICK_INTERVAL = 17;
+    private static final int TICK_INTERVAL = 34;
     private final Timer gameLoop = new Timer(TICK_INTERVAL, this);
 
     private boolean gamePLaying;
@@ -143,7 +143,10 @@ public class GameController implements ActionListener, GameObserver {
     }
 
     private void updateGameLoop() {
+        gameView.requestFocus();
         logicController.update();
+        gameView.revalidate();
+        gameView.repaint();
     }
 
     public void start() {
@@ -154,8 +157,7 @@ public class GameController implements ActionListener, GameObserver {
         soundController.playBackground();
     }
 
-    private void resizeViews()
-    {
+    private void resizeViews() {
         int newWidth = settings.getVideoSettings().getCurrentScreenResolution().getWidth();
         int newHeight = settings.getVideoSettings().getCurrentScreenResolution().getHeight();
         Dimension newSize = new Dimension(newWidth, newHeight);
@@ -200,6 +202,7 @@ public class GameController implements ActionListener, GameObserver {
         UIManager.put("Tree.font", font);
         setFontForAllChildComponents(component, font);
     }
+
     private void setFontForAllChildComponents(Component component, Font font) {
         component.setFont(font);
         if (component instanceof Container) {
@@ -249,6 +252,8 @@ public class GameController implements ActionListener, GameObserver {
         panel.invalidate();
         panel.revalidate();
         panel.repaint();
+        panel.setFocusable(true);
+        panel.requestFocusInWindow();
     }
 
     @Override
