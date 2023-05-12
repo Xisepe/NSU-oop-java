@@ -1,0 +1,589 @@
+2023-03-03 19:45:00 INFO  SingletonCommandFactory:29 - Initializing command factory
+  2023-03-03 19:45:00 INFO  SingletonCommandFactory:70 - Creating command: PRINT
+  2023-03-03 19:45:00 INFO  SingletonCommandFactory:70 - Creating command: *
+  2023-03-03 19:45:00 WARN  SingletonCommandFactory:81 - No empty constructor for: models.command.impl.math.Multiply
+  2023-03-03 19:45:00 INFO  SingletonCommandFactory:70 - Creating command: PUSH
+  2023-03-03 19:45:00 INFO  SingletonCommandFactory:70 - Creating command: SQRT
+  2023-03-03 19:45:00 WARN  SingletonCommandFactory:74 - Cannot find class: SQRT
+  2023-03-03 19:45:00 INFO  SingletonCommandFactory:70 - Creating command: +
+  2023-03-03 19:45:00 INFO  SingletonCommandFactory:70 - Creating command: POP
+  2023-03-03 19:45:00 WARN  SingletonCommandFactory:81 - No empty constructor for: models.command.impl.data.Pop
+  2023-03-03 19:45:00 INFO  SingletonCommandFactory:70 - Creating command: -
+  2023-03-03 19:45:00 INFO  SingletonCommandFactory:70 - Creating command: DEFINE
+  2023-03-03 19:45:00 INFO  SingletonCommandFactory:70 - Creating command: /
+  2023-03-03 19:46:16 INFO  SingletonCommandFactory:29 - Initializing command factory
+  2023-03-03 19:46:16 INFO  SingletonCommandFactory:70 - Creating command: PRINT
+  2023-03-03 19:46:16 INFO  SingletonCommandFactory:70 - Creating command: *
+  2023-03-03 19:46:16 INFO  SingletonCommandFactory:70 - Creating command: PUSH
+  2023-03-03 19:46:16 INFO  SingletonCommandFactory:70 - Creating command: SQRT
+  2023-03-03 19:46:16 WARN  SingletonCommandFactory:74 - Cannot find class: SQRT
+  2023-03-03 19:46:16 INFO  SingletonCommandFactory:70 - Creating command: +
+  2023-03-03 19:46:16 INFO  SingletonCommandFactory:70 - Creating command: POP
+  2023-03-03 19:46:16 WARN  SingletonCommandFactory:81 - No empty constructor for: models.command.impl.data.Pop
+  2023-03-03 19:46:16 INFO  SingletonCommandFactory:70 - Creating command: -
+  2023-03-03 19:46:16 INFO  SingletonCommandFactory:70 - Creating command: DEFINE
+  2023-03-03 19:46:16 INFO  SingletonCommandFactory:70 - Creating command: /
+  2023-03-03 19:46:49 INFO  SingletonCommandFactory:29 - Initializing command factory
+  2023-03-03 19:46:49 INFO  SingletonCommandFactory:70 - Creating command: SQRT
+  2023-03-03 19:46:49 WARN  SingletonCommandFactory:74 - Cannot find class: SQRT
+  2023-03-03 19:46:49 INFO  SingletonCommandFactory:70 - Creating command: POP
+  2023-03-03 19:47:46 INFO  SingletonCommandFactory:29 - Initializing command factory
+  2023-03-03 19:47:46 INFO  SingletonCommandFactory:70 - Creating command: PRINT
+  2023-03-03 19:47:46 INFO  SingletonCommandFactory:70 - Creating command: *
+  2023-03-03 19:47:46 INFO  SingletonCommandFactory:70 - Creating command: PUSH
+  2023-03-03 19:47:46 INFO  SingletonCommandFactory:70 - Creating command: SQRT
+  2023-03-03 19:47:46 INFO  SingletonCommandFactory:70 - Creating command: +
+  2023-03-03 19:47:46 INFO  SingletonCommandFactory:70 - Creating command: POP
+  2023-03-03 19:47:46 INFO  SingletonCommandFactory:70 - Creating command: -
+  2023-03-03 19:47:46 INFO  SingletonCommandFactory:70 - Creating command: DEFINE
+  2023-03-03 19:47:46 INFO  SingletonCommandFactory:70 - Creating command: /
+  2023-03-03 21:26:37 INFO  SingletonCommandFactory:29 - Initializing command factory
+  2023-03-03 21:26:37 INFO  SingletonCommandFactory:70 - Creating command: /
+  2023-03-03 21:26:37 INFO  AbstractCommand:18 - validating
+  2023-03-03 21:26:37 WARN  Divide:18 - Division by zero
+  2023-03-03 21:26:37 INFO  SingletonCommandFactory:70 - Creating command: /
+  2023-03-03 21:26:37 INFO  AbstractCommand:18 - validating
+  2023-03-03 21:26:37 INFO  SingletonCommandFactory:70 - Creating command: /
+  2023-03-03 21:26:37 INFO  AbstractCommand:18 - validating
+  2023-03-03 21:26:37 WARN  AbstractCommand:20 - Not enough elements in the stack. Throwing NotEnoughStackElements exception
+  2023-03-03 21:26:37 INFO  SingletonCommandFactory:70 - Creating command: *
+  2023-03-03 21:26:37 INFO  AbstractCommand:18 - validating
+  2023-03-03 21:26:37 WARN  AbstractCommand:20 - Not enough elements in the stack. Throwing NotEnoughStackElements exception
+  2023-03-03 21:26:37 INFO  SingletonCommandFactory:70 - Creating command: *
+  2023-03-03 21:26:37 INFO  AbstractCommand:18 - validating
+  2023-03-03 21:26:37 INFO  Multiply:13 - Multiplying -121.423 and 20.4
+  2023-03-03 21:26:37 INFO  SingletonCommandFactory:70 - Creating command: -
+  2023-03-03 21:26:37 INFO  AbstractCommand:18 - validating
+  2023-03-03 21:26:37 INFO  Subtract:13 - Subtracting 10.0 - 20.4
+  2023-03-03 21:26:37 INFO  SingletonCommandFactory:70 - Creating command: -
+  2023-03-03 21:26:37 INFO  AbstractCommand:18 - validating
+  2023-03-03 21:26:37 WARN  AbstractCommand:20 - Not enough elements in the stack. Throwing NotEnoughStackElements exception
+  2023-03-03 21:26:37 INFO  SingletonCommandFactory:70 - Creating command: +
+  2023-03-03 21:26:37 INFO  AbstractCommand:18 - validating
+  2023-03-03 21:26:37 INFO  Add:13 - Adding 15.0 and -2.4
+  2023-03-03 21:26:37 INFO  SingletonCommandFactory:70 - Creating command: +
+  2023-03-03 21:26:37 INFO  AbstractCommand:18 - validating
+  2023-03-03 21:26:37 WARN  AbstractCommand:20 - Not enough elements in the stack. Throwing NotEnoughStackElements exception
+  2023-03-03 21:27:38 INFO  SingletonCommandFactory:29 - Initializing command factory
+  2023-03-03 21:27:38 INFO  SingletonCommandFactory:70 - Creating command: /
+  2023-03-03 21:27:38 INFO  AbstractCommand:18 - validating
+  2023-03-03 21:27:38 WARN  Divide:18 - Division by zero
+  2023-03-03 21:34:08 INFO  SingletonCommandFactory:29 - Initializing command factory
+  2023-03-03 21:34:08 INFO  SingletonCommandFactory:70 - Creating command: SQRT
+  2023-03-03 21:34:08 INFO  AbstractCommand:18 - validating
+  2023-03-03 21:34:08 WARN  Sqrt:18 - Sqrt command can't be applied to negative numbers
+  2023-03-03 21:34:08 INFO  SingletonCommandFactory:70 - Creating command: SQRT
+  2023-03-03 21:34:08 INFO  AbstractCommand:18 - validating
+  2023-03-03 21:34:08 WARN  AbstractCommand:20 - Not enough elements in the stack. Throwing NotEnoughStackElements exception
+  2023-03-03 21:34:08 INFO  SingletonCommandFactory:70 - Creating command: SQRT
+  2023-03-03 21:34:08 INFO  AbstractCommand:18 - validating
+  2023-03-03 21:35:25 INFO  SingletonCommandFactory:29 - Initializing command factory
+  2023-03-03 21:35:25 INFO  SingletonCommandFactory:70 - Creating command: SQRT
+  2023-03-03 21:35:25 INFO  AbstractCommand:18 - validating
+  2023-03-03 21:35:25 WARN  Sqrt:18 - Sqrt command can't be applied to negative numbers
+  2023-03-03 21:35:25 INFO  SingletonCommandFactory:70 - Creating command: SQRT
+  2023-03-03 21:35:25 INFO  AbstractCommand:18 - validating
+  2023-03-03 21:35:25 WARN  AbstractCommand:20 - Not enough elements in the stack. Throwing NotEnoughStackElements exception
+  2023-03-03 21:35:25 INFO  SingletonCommandFactory:70 - Creating command: SQRT
+  2023-03-03 21:35:25 INFO  AbstractCommand:18 - validating
+  2023-03-03 21:37:03 INFO  SingletonCommandFactory:29 - Initializing command factory
+  2023-03-03 21:37:10 INFO  SingletonCommandFactory:70 - Creating command: SQRT
+  2023-03-03 21:37:10 INFO  AbstractCommand:18 - validating
+  2023-03-03 21:37:10 WARN  Sqrt:18 - Sqrt command can't be applied to negative numbers
+  2023-03-03 21:37:10 INFO  SingletonCommandFactory:70 - Creating command: SQRT
+  2023-03-03 21:37:10 INFO  AbstractCommand:18 - validating
+  2023-03-03 21:37:10 WARN  AbstractCommand:20 - Not enough elements in the stack. Throwing NotEnoughStackElements exception
+  2023-03-03 21:37:10 INFO  SingletonCommandFactory:70 - Creating command: SQRT
+  2023-03-03 21:37:10 INFO  AbstractCommand:18 - validating
+  2023-03-03 21:37:11 INFO  SingletonCommandFactory:29 - Initializing command factory
+  2023-03-03 21:37:11 INFO  SingletonCommandFactory:70 - Creating command: SQRT
+  2023-03-03 21:37:11 INFO  AbstractCommand:18 - validating
+  2023-03-03 21:37:11 WARN  Sqrt:18 - Sqrt command can't be applied to negative numbers
+  2023-03-03 21:37:11 INFO  SingletonCommandFactory:70 - Creating command: SQRT
+  2023-03-03 21:37:11 INFO  AbstractCommand:18 - validating
+  2023-03-03 21:37:11 WARN  AbstractCommand:20 - Not enough elements in the stack. Throwing NotEnoughStackElements exception
+  2023-03-03 21:37:11 INFO  SingletonCommandFactory:70 - Creating command: SQRT
+  2023-03-03 21:37:34 INFO  AbstractCommand:18 - validating
+  2023-03-03 21:41:36 INFO  SingletonCommandFactory:29 - Initializing command factory
+  2023-03-03 21:41:36 INFO  SingletonCommandFactory:70 - Creating command: SQRT
+  2023-03-03 21:41:36 INFO  AbstractCommand:18 - validating
+  2023-03-03 21:41:36 WARN  Sqrt:18 - Sqrt command can't be applied to negative numbers
+  2023-03-03 21:41:36 INFO  SingletonCommandFactory:70 - Creating command: SQRT
+  2023-03-03 21:41:36 INFO  AbstractCommand:18 - validating
+  2023-03-03 21:41:36 WARN  AbstractCommand:20 - Not enough elements in the stack. Throwing NotEnoughStackElements exception
+  2023-03-03 21:41:36 INFO  SingletonCommandFactory:70 - Creating command: SQRT
+  2023-03-03 21:41:36 INFO  AbstractCommand:18 - validating
+  2023-03-03 21:41:36 INFO  Sqrt:25 - Take the square root of 121.423
+  2023-03-03 21:41:36 INFO  SingletonCommandFactory:70 - Creating command: /
+  2023-03-03 21:41:36 INFO  AbstractCommand:18 - validating
+  2023-03-03 21:41:36 WARN  Divide:18 - Division by zero
+  2023-03-03 21:41:36 INFO  SingletonCommandFactory:70 - Creating command: /
+  2023-03-03 21:41:36 INFO  AbstractCommand:18 - validating
+  2023-03-03 21:41:36 INFO  SingletonCommandFactory:70 - Creating command: /
+  2023-03-03 21:41:36 INFO  AbstractCommand:18 - validating
+  2023-03-03 21:41:36 WARN  AbstractCommand:20 - Not enough elements in the stack. Throwing NotEnoughStackElements exception
+  2023-03-03 21:41:36 INFO  SingletonCommandFactory:70 - Creating command: *
+  2023-03-03 21:41:36 INFO  AbstractCommand:18 - validating
+  2023-03-03 21:41:36 WARN  AbstractCommand:20 - Not enough elements in the stack. Throwing NotEnoughStackElements exception
+  2023-03-03 21:41:36 INFO  SingletonCommandFactory:70 - Creating command: *
+  2023-03-03 21:41:36 INFO  AbstractCommand:18 - validating
+  2023-03-03 21:41:36 INFO  Multiply:13 - Multiplying -121.423 and 20.4
+  2023-03-03 21:41:36 INFO  SingletonCommandFactory:70 - Creating command: -
+  2023-03-03 21:41:36 INFO  AbstractCommand:18 - validating
+  2023-03-03 21:41:36 INFO  Subtract:13 - Subtracting 10.0 - 20.4
+  2023-03-03 21:41:36 INFO  SingletonCommandFactory:70 - Creating command: -
+  2023-03-03 21:41:36 INFO  AbstractCommand:18 - validating
+  2023-03-03 21:41:36 WARN  AbstractCommand:20 - Not enough elements in the stack. Throwing NotEnoughStackElements exception
+  2023-03-03 21:41:36 INFO  SingletonCommandFactory:70 - Creating command: +
+  2023-03-03 21:41:36 INFO  AbstractCommand:18 - validating
+  2023-03-03 21:41:36 INFO  Add:13 - Adding 15.0 and -2.4
+  2023-03-03 21:41:36 INFO  SingletonCommandFactory:70 - Creating command: +
+  2023-03-03 21:41:36 INFO  AbstractCommand:18 - validating
+  2023-03-03 21:41:36 WARN  AbstractCommand:20 - Not enough elements in the stack. Throwing NotEnoughStackElements exception
+  2023-03-03 21:51:32 INFO  SingletonCommandFactory:29 - Initializing command factory
+  2023-03-03 21:51:32 INFO  SingletonCommandFactory:70 - Creating command: PUSH
+  2023-03-03 21:51:32 WARN  Push:25 - No such context element: defines
+  2023-03-03 21:51:32 INFO  SingletonCommandFactory:70 - Creating command: PUSH
+  2023-03-03 21:51:32 WARN  Push:25 - No such context element: defines
+  2023-03-03 21:51:32 INFO  SingletonCommandFactory:70 - Creating command: PUSH
+  2023-03-03 21:51:32 WARN  Push:25 - No such context element: defines
+  2023-03-03 21:52:30 INFO  SingletonCommandFactory:29 - Initializing command factory
+  2023-03-03 21:52:30 INFO  SingletonCommandFactory:70 - Creating command: PUSH
+  2023-03-03 21:52:30 INFO  Push:22 - Pushing 121.3
+  2023-03-03 21:52:30 INFO  SingletonCommandFactory:70 - Creating command: PUSH
+  2023-03-03 21:52:30 INFO  Push:22 - Pushing abcs
+  2023-03-03 21:52:30 WARN  Push:31 - Args: abcs is not a number
+  2023-03-03 21:52:30 INFO  SingletonCommandFactory:70 - Creating command: PUSH
+  2023-03-03 21:52:30 INFO  Push:22 - Pushing a
+  2023-03-03 21:52:30 WARN  Push:31 - Args: a is not a number
+  2023-03-03 21:53:43 INFO  SingletonCommandFactory:29 - Initializing command factory
+  2023-03-03 21:53:43 INFO  SingletonCommandFactory:70 - Creating command: PUSH
+  2023-03-03 21:53:43 INFO  Push:22 - Pushing 121.3
+  2023-03-03 21:53:43 INFO  SingletonCommandFactory:70 - Creating command: PUSH
+  2023-03-03 21:53:43 INFO  Push:22 - Pushing abcs
+  2023-03-03 21:53:43 WARN  Push:31 - Args: abcs is not a number
+  2023-03-03 21:53:43 INFO  SingletonCommandFactory:70 - Creating command: PUSH
+  2023-03-03 21:53:51 INFO  Push:22 - Pushing a
+  2023-03-03 21:54:44 WARN  Push:31 - Args: a is not a number
+  2023-03-03 21:57:39 INFO  SingletonCommandFactory:29 - Initializing command factory
+  2023-03-03 21:57:39 INFO  SingletonCommandFactory:70 - Creating command: PUSH
+  2023-03-03 21:57:39 INFO  Push:22 - Pushing a
+  2023-03-03 22:07:04 INFO  SingletonCommandFactory:29 - Initializing command factory
+  2023-03-03 22:07:04 INFO  SingletonCommandFactory:70 - Creating command: DEFINE
+  2023-03-03 22:07:04 INFO  Define:23 - Trying to define: a = 1000.0
+  2023-03-03 22:07:04 INFO  SingletonCommandFactory:70 - Creating command: DEFINE
+  2023-03-03 22:07:04 INFO  Define:23 - Trying to define: b = a
+  2023-03-03 22:07:04 INFO  SingletonCommandFactory:70 - Creating command: DEFINE
+  2023-03-03 22:07:04 INFO  Define:23 - Trying to define: abc = avs
+  2023-03-03 22:07:04 WARN  Define:36 - trying to define not a number
+  2023-03-03 22:07:04 INFO  SingletonCommandFactory:70 - Creating command: DEFINE
+  2023-03-03 22:07:04 INFO  Define:23 - Trying to define: b = 1000.0
+  2023-03-03 22:07:04 INFO  SingletonCommandFactory:70 - Creating command: DEFINE
+  2023-03-03 22:07:04 WARN  Define:20 - Define: Wrong number of arguments
+  2023-03-03 22:09:27 INFO  SingletonCommandFactory:29 - Initializing command factory
+  2023-03-03 22:09:27 INFO  SingletonCommandFactory:70 - Creating command: POP
+  2023-03-03 22:09:27 INFO  AbstractCommand:18 - validating
+  2023-03-03 22:09:27 WARN  AbstractCommand:20 - Not enough elements in the stack. Throwing NotEnoughStackElements exception
+  2023-03-03 22:09:27 INFO  SingletonCommandFactory:70 - Creating command: POP
+  2023-03-03 22:09:27 INFO  AbstractCommand:18 - validating
+  2023-03-03 22:09:27 INFO  Pop:21 - Trying to pop from stack
+  2023-03-03 22:10:23 INFO  SingletonCommandFactory:29 - Initializing command factory
+  2023-03-03 22:10:23 INFO  SingletonCommandFactory:70 - Creating command: SQRT
+  2023-03-03 22:10:23 INFO  AbstractCommand:18 - validating
+  2023-03-03 22:10:23 WARN  Sqrt:18 - Sqrt command can't be applied to negative numbers
+  2023-03-03 22:10:23 INFO  SingletonCommandFactory:70 - Creating command: SQRT
+  2023-03-03 22:10:23 INFO  AbstractCommand:18 - validating
+  2023-03-03 22:10:23 WARN  AbstractCommand:20 - Not enough elements in the stack. Throwing NotEnoughStackElements exception
+  2023-03-03 22:10:23 INFO  SingletonCommandFactory:70 - Creating command: SQRT
+  2023-03-03 22:10:23 INFO  AbstractCommand:18 - validating
+  2023-03-03 22:10:23 INFO  Sqrt:25 - Take the square root of 121.423
+  2023-03-03 22:10:23 INFO  SingletonCommandFactory:70 - Creating command: /
+  2023-03-03 22:10:23 INFO  AbstractCommand:18 - validating
+  2023-03-03 22:10:23 WARN  Divide:18 - Division by zero
+  2023-03-03 22:10:23 INFO  SingletonCommandFactory:70 - Creating command: /
+  2023-03-03 22:10:23 INFO  AbstractCommand:18 - validating
+  2023-03-03 22:10:23 INFO  SingletonCommandFactory:70 - Creating command: /
+  2023-03-03 22:10:23 INFO  AbstractCommand:18 - validating
+  2023-03-03 22:10:23 WARN  AbstractCommand:20 - Not enough elements in the stack. Throwing NotEnoughStackElements exception
+  2023-03-03 22:10:23 INFO  SingletonCommandFactory:70 - Creating command: *
+  2023-03-03 22:10:23 INFO  AbstractCommand:18 - validating
+  2023-03-03 22:10:23 WARN  AbstractCommand:20 - Not enough elements in the stack. Throwing NotEnoughStackElements exception
+  2023-03-03 22:10:23 INFO  SingletonCommandFactory:70 - Creating command: *
+  2023-03-03 22:10:23 INFO  AbstractCommand:18 - validating
+  2023-03-03 22:10:23 INFO  Multiply:13 - Multiplying -121.423 and 20.4
+  2023-03-03 22:10:23 INFO  SingletonCommandFactory:70 - Creating command: -
+  2023-03-03 22:10:23 INFO  AbstractCommand:18 - validating
+  2023-03-03 22:10:23 INFO  Subtract:13 - Subtracting 10.0 - 20.4
+  2023-03-03 22:10:23 INFO  SingletonCommandFactory:70 - Creating command: -
+  2023-03-03 22:10:23 INFO  AbstractCommand:18 - validating
+  2023-03-03 22:10:23 WARN  AbstractCommand:20 - Not enough elements in the stack. Throwing NotEnoughStackElements exception
+  2023-03-03 22:10:23 INFO  SingletonCommandFactory:70 - Creating command: +
+  2023-03-03 22:10:23 INFO  AbstractCommand:18 - validating
+  2023-03-03 22:10:23 INFO  Add:13 - Adding 15.0 and -2.4
+  2023-03-03 22:10:23 INFO  SingletonCommandFactory:70 - Creating command: +
+  2023-03-03 22:10:23 INFO  AbstractCommand:18 - validating
+  2023-03-03 22:10:23 WARN  AbstractCommand:20 - Not enough elements in the stack. Throwing NotEnoughStackElements exception
+  2023-03-03 22:10:23 INFO  SingletonCommandFactory:70 - Creating command: POP
+  2023-03-03 22:10:23 INFO  AbstractCommand:18 - validating
+  2023-03-03 22:10:23 WARN  AbstractCommand:20 - Not enough elements in the stack. Throwing NotEnoughStackElements exception
+  2023-03-03 22:10:23 INFO  SingletonCommandFactory:70 - Creating command: POP
+  2023-03-03 22:10:23 INFO  AbstractCommand:18 - validating
+  2023-03-03 22:10:23 INFO  Pop:21 - Trying to pop from stack
+  2023-03-03 22:10:23 INFO  SingletonCommandFactory:70 - Creating command: DEFINE
+  2023-03-03 22:10:23 INFO  Define:23 - Trying to define: a = 1000.0
+  2023-03-03 22:10:23 INFO  SingletonCommandFactory:70 - Creating command: DEFINE
+  2023-03-03 22:10:23 INFO  Define:23 - Trying to define: b = a
+  2023-03-03 22:10:23 INFO  SingletonCommandFactory:70 - Creating command: DEFINE
+  2023-03-03 22:10:23 INFO  Define:23 - Trying to define: abc = avs
+  2023-03-03 22:10:23 WARN  Define:36 - trying to define not a number
+  2023-03-03 22:10:23 INFO  SingletonCommandFactory:70 - Creating command: DEFINE
+  2023-03-03 22:10:23 INFO  Define:23 - Trying to define: b = 1000.0
+  2023-03-03 22:10:23 INFO  SingletonCommandFactory:70 - Creating command: DEFINE
+  2023-03-03 22:10:23 WARN  Define:20 - Define: Wrong number of arguments
+  2023-03-03 22:10:23 INFO  SingletonCommandFactory:70 - Creating command: PUSH
+  2023-03-03 22:10:23 INFO  Push:22 - Pushing 121.3
+  2023-03-03 22:10:23 INFO  SingletonCommandFactory:70 - Creating command: PUSH
+  2023-03-03 22:10:23 INFO  Push:22 - Pushing abcs
+  2023-03-03 22:10:23 WARN  Push:35 - Args: abcs is not a number
+  2023-03-03 22:10:23 INFO  SingletonCommandFactory:70 - Creating command: PUSH
+  2023-03-03 22:10:23 INFO  Push:22 - Pushing a
+  2023-03-03 22:10:23 INFO  SingletonCommandFactory:70 - Creating command: POP
+  2023-03-03 22:10:23 INFO  AbstractCommand:18 - validating
+  2023-03-03 22:10:23 WARN  AbstractCommand:20 - Not enough elements in the stack. Throwing NotEnoughStackElements exception
+  2023-03-03 22:10:23 INFO  SingletonCommandFactory:70 - Creating command: POP
+  2023-03-03 22:10:23 INFO  AbstractCommand:18 - validating
+  2023-03-03 22:10:23 INFO  Pop:21 - Trying to pop from stack
+  2023-03-03 22:10:23 INFO  SingletonCommandFactory:70 - Creating command: DEFINE
+  2023-03-03 22:10:23 INFO  Define:23 - Trying to define: a = 1000.0
+  2023-03-03 22:10:23 INFO  SingletonCommandFactory:70 - Creating command: DEFINE
+  2023-03-03 22:10:23 INFO  Define:23 - Trying to define: b = a
+  2023-03-03 22:10:23 INFO  SingletonCommandFactory:70 - Creating command: DEFINE
+  2023-03-03 22:10:23 INFO  Define:23 - Trying to define: abc = avs
+  2023-03-03 22:10:23 WARN  Define:36 - trying to define not a number
+  2023-03-03 22:10:23 INFO  SingletonCommandFactory:70 - Creating command: DEFINE
+  2023-03-03 22:10:23 INFO  Define:23 - Trying to define: b = 1000.0
+  2023-03-03 22:10:23 INFO  SingletonCommandFactory:70 - Creating command: DEFINE
+  2023-03-03 22:10:23 WARN  Define:20 - Define: Wrong number of arguments
+  2023-03-03 22:10:23 INFO  SingletonCommandFactory:70 - Creating command: PUSH
+  2023-03-03 22:10:23 INFO  Push:22 - Pushing 121.3
+  2023-03-03 22:10:23 INFO  SingletonCommandFactory:70 - Creating command: PUSH
+  2023-03-03 22:10:23 INFO  Push:22 - Pushing abcs
+  2023-03-03 22:10:23 WARN  Push:35 - Args: abcs is not a number
+  2023-03-03 22:10:23 INFO  SingletonCommandFactory:70 - Creating command: PUSH
+  2023-03-03 22:10:23 INFO  Push:22 - Pushing a
+  2023-03-03 22:10:23 INFO  SingletonCommandFactory:70 - Creating command: SQRT
+  2023-03-03 22:10:23 INFO  AbstractCommand:18 - validating
+  2023-03-03 22:10:23 WARN  Sqrt:18 - Sqrt command can't be applied to negative numbers
+  2023-03-03 22:10:23 INFO  SingletonCommandFactory:70 - Creating command: SQRT
+  2023-03-03 22:10:23 INFO  AbstractCommand:18 - validating
+  2023-03-03 22:10:23 WARN  AbstractCommand:20 - Not enough elements in the stack. Throwing NotEnoughStackElements exception
+  2023-03-03 22:10:23 INFO  SingletonCommandFactory:70 - Creating command: SQRT
+  2023-03-03 22:10:23 INFO  AbstractCommand:18 - validating
+  2023-03-03 22:10:23 INFO  Sqrt:25 - Take the square root of 121.423
+  2023-03-03 22:10:23 INFO  SingletonCommandFactory:70 - Creating command: /
+  2023-03-03 22:10:23 INFO  AbstractCommand:18 - validating
+  2023-03-03 22:10:23 WARN  Divide:18 - Division by zero
+  2023-03-03 22:10:23 INFO  SingletonCommandFactory:70 - Creating command: /
+  2023-03-03 22:10:23 INFO  AbstractCommand:18 - validating
+  2023-03-03 22:10:23 INFO  SingletonCommandFactory:70 - Creating command: /
+  2023-03-03 22:10:23 INFO  AbstractCommand:18 - validating
+  2023-03-03 22:10:23 WARN  AbstractCommand:20 - Not enough elements in the stack. Throwing NotEnoughStackElements exception
+  2023-03-03 22:10:23 INFO  SingletonCommandFactory:70 - Creating command: *
+  2023-03-03 22:10:23 INFO  AbstractCommand:18 - validating
+  2023-03-03 22:10:23 WARN  AbstractCommand:20 - Not enough elements in the stack. Throwing NotEnoughStackElements exception
+  2023-03-03 22:10:23 INFO  SingletonCommandFactory:70 - Creating command: *
+  2023-03-03 22:10:23 INFO  AbstractCommand:18 - validating
+  2023-03-03 22:10:23 INFO  Multiply:13 - Multiplying -121.423 and 20.4
+  2023-03-03 22:10:23 INFO  SingletonCommandFactory:70 - Creating command: -
+  2023-03-03 22:10:23 INFO  AbstractCommand:18 - validating
+  2023-03-03 22:10:23 INFO  Subtract:13 - Subtracting 10.0 - 20.4
+  2023-03-03 22:10:23 INFO  SingletonCommandFactory:70 - Creating command: -
+  2023-03-03 22:10:23 INFO  AbstractCommand:18 - validating
+  2023-03-03 22:10:23 WARN  AbstractCommand:20 - Not enough elements in the stack. Throwing NotEnoughStackElements exception
+  2023-03-03 22:10:23 INFO  SingletonCommandFactory:70 - Creating command: +
+  2023-03-03 22:10:23 INFO  AbstractCommand:18 - validating
+  2023-03-03 22:10:23 INFO  Add:13 - Adding 15.0 and -2.4
+  2023-03-03 22:10:23 INFO  SingletonCommandFactory:70 - Creating command: +
+  2023-03-03 22:10:23 INFO  AbstractCommand:18 - validating
+  2023-03-03 22:10:23 WARN  AbstractCommand:20 - Not enough elements in the stack. Throwing NotEnoughStackElements exception
+  2023-03-03 22:10:23 INFO  SingletonCommandFactory:70 - Creating command: PRINT
+  2023-03-03 22:10:23 INFO  SingletonCommandFactory:70 - Creating command: *
+  2023-03-03 22:10:23 INFO  SingletonCommandFactory:70 - Creating command: PUSH
+  2023-03-03 22:10:23 INFO  SingletonCommandFactory:70 - Creating command: SQRT
+  2023-03-03 22:10:23 INFO  SingletonCommandFactory:70 - Creating command: +
+  2023-03-03 22:10:23 INFO  SingletonCommandFactory:70 - Creating command: POP
+  2023-03-03 22:10:23 INFO  SingletonCommandFactory:70 - Creating command: -
+  2023-03-03 22:10:23 INFO  SingletonCommandFactory:70 - Creating command: DEFINE
+  2023-03-03 22:10:23 INFO  SingletonCommandFactory:70 - Creating command: /
+  2023-03-03 22:50:55 INFO  SingletonCommandFactory:28 - Initializing command factory
+  2023-03-03 22:50:55 INFO  SingletonCommandFactory:69 - Creating command: ADD
+  2023-03-03 22:50:55 WARN  SingletonCommandFactory:73 - Cannot find class: ADD
+  2023-03-03 22:51:04 INFO  SingletonCommandFactory:69 - Creating command: +
+  2023-03-03 22:51:04 INFO  AbstractCommand:18 - validating
+  2023-03-03 22:51:04 WARN  AbstractCommand:20 - Not enough elements in the stack. Throwing NotEnoughStackElements exception
+  2023-03-03 22:52:46 INFO  SingletonCommandFactory:28 - Initializing command factory
+  2023-03-03 22:52:46 INFO  SingletonCommandFactory:69 - Creating command: +
+  2023-03-03 22:52:46 INFO  AbstractCommand:18 - validating
+  2023-03-03 22:52:46 WARN  AbstractCommand:20 - Not enough elements in the stack. Throwing NotEnoughStackElements exception
+  2023-03-03 22:52:55 INFO  SingletonCommandFactory:69 - Creating command: PUSH
+  2023-03-03 22:52:55 INFO  Push:22 - Pushing 15
+  2023-03-03 22:52:58 INFO  SingletonCommandFactory:69 - Creating command: PRINT
+  2023-03-03 22:52:58 INFO  AbstractCommand:18 - validating
+  2023-03-03 22:52:58 INFO  Print:21 - Trying to print top of stack
+  2023-03-03 22:53:07 INFO  SingletonCommandFactory:69 - Creating command: PSUH
+  2023-03-03 22:53:07 WARN  SingletonCommandFactory:73 - Cannot find class: PSUH
+  2023-03-03 22:56:11 INFO  SingletonCommandFactory:28 - Initializing command factory
+  2023-03-03 22:56:11 INFO  SingletonCommandFactory:69 - Creating command: psh
+  2023-03-03 22:56:11 WARN  SingletonCommandFactory:73 - Cannot find class: psh
+  2023-03-03 22:56:31 INFO  SingletonCommandFactory:28 - Initializing command factory
+  2023-03-03 22:56:31 INFO  SingletonCommandFactory:69 - Creating command: osh
+  2023-03-03 22:56:31 WARN  SingletonCommandFactory:73 - Cannot find class: osh
+  2023-03-03 23:01:02 INFO  SingletonCommandFactory:28 - Initializing command factory
+  2023-03-03 23:01:02 INFO  SingletonCommandFactory:69 - Creating command: PUSH
+  2023-03-03 23:01:02 INFO  Push:22 - Pushing 124.2
+  2023-03-03 23:01:06 INFO  SingletonCommandFactory:69 - Creating command: PUSH
+  2023-03-03 23:01:06 INFO  Push:22 - Pushing 213
+  2023-03-03 23:01:08 INFO  SingletonCommandFactory:69 - Creating command: psh
+  2023-03-03 23:01:08 WARN  SingletonCommandFactory:73 - Cannot find class: psh
+  2023-03-03 23:01:12 INFO  SingletonCommandFactory:69 - Creating command: ADD
+  2023-03-03 23:01:12 WARN  SingletonCommandFactory:73 - Cannot find class: ADD
+  2023-03-03 23:01:15 INFO  SingletonCommandFactory:69 - Creating command: +
+  2023-03-03 23:01:15 INFO  AbstractCommand:18 - validating
+  2023-03-03 23:01:15 INFO  Add:13 - Adding 124.2 and 213.0
+  2023-03-03 23:01:20 INFO  SingletonCommandFactory:69 - Creating command: PRINT
+  2023-03-03 23:01:20 INFO  AbstractCommand:18 - validating
+  2023-03-03 23:01:20 INFO  Print:21 - Trying to print top of stack
+  2023-03-03 23:01:24 INFO  SingletonCommandFactory:69 - Creating command: POP
+  2023-03-03 23:01:24 INFO  AbstractCommand:18 - validating
+  2023-03-03 23:01:24 INFO  Pop:20 - Trying to pop from stack
+  2023-03-03 23:01:26 INFO  SingletonCommandFactory:69 - Creating command: PRINT
+  2023-03-03 23:01:26 INFO  AbstractCommand:18 - validating
+  2023-03-03 23:01:26 WARN  AbstractCommand:20 - Not enough elements in the stack. Throwing NotEnoughStackElements exception
+  2023-03-03 23:02:03 INFO  SingletonCommandFactory:69 - Creating command: PUSH
+  2023-03-03 23:02:03 INFO  Push:22 - Pushing -12.3
+  2023-03-03 23:02:05 INFO  SingletonCommandFactory:69 - Creating command: SQRT
+  2023-03-03 23:02:05 INFO  AbstractCommand:18 - validating
+  2023-03-03 23:02:05 WARN  Sqrt:18 - Sqrt command can't be applied to negative numbers
+  2023-03-03 23:02:26 INFO  SingletonCommandFactory:69 - Creating command: DEFINE
+  2023-03-03 23:02:26 WARN  Define:20 - Define: Wrong number of arguments
+  2023-03-03 23:08:59 INFO  SingletonCommandFactory:28 - Initializing command factory
+  2023-03-03 23:08:59 INFO  SingletonCommandFactory:69 - Creating command: PUSH
+  2023-03-03 23:08:59 INFO  Push:22 - Pushing 10
+  2023-03-03 23:09:03 INFO  SingletonCommandFactory:69 - Creating command: PUSH
+  2023-03-03 23:09:03 INFO  Push:22 - Pushing 24.3
+  2023-03-03 23:09:05 INFO  SingletonCommandFactory:69 - Creating command: +
+  2023-03-03 23:09:05 INFO  AbstractCommand:18 - validating
+  2023-03-03 23:09:05 INFO  Add:13 - Adding 10.0 and 24.3
+  2023-03-03 23:09:08 INFO  SingletonCommandFactory:69 - Creating command: PRINT
+  2023-03-03 23:09:08 INFO  AbstractCommand:18 - validating
+  2023-03-03 23:09:08 INFO  Print:21 - Trying to print top of stack
+  2023-03-03 23:09:16 INFO  SingletonCommandFactory:69 - Creating command: PUSH
+  2023-03-03 23:09:16 INFO  Push:22 - Pushing null
+  2023-03-03 23:14:19 INFO  SingletonCommandFactory:28 - Initializing command factory
+  2023-03-03 23:14:19 INFO  SingletonCommandFactory:69 - Creating command: PUSH
+  2023-03-03 23:14:26 INFO  SingletonCommandFactory:69 - Creating command: ADD
+  2023-03-03 23:14:26 WARN  SingletonCommandFactory:73 - Cannot find class: ADD
+  2023-03-03 23:14:28 INFO  SingletonCommandFactory:69 - Creating command: +
+  2023-03-03 23:14:28 INFO  AbstractCommand:18 - validating
+  2023-03-03 23:14:28 WARN  AbstractCommand:20 - Not enough elements in the stack. Throwing NotEnoughStackElements exception
+  2023-03-03 23:14:32 INFO  SingletonCommandFactory:69 - Creating command: POP
+  2023-03-03 23:14:32 INFO  AbstractCommand:18 - validating
+  2023-03-03 23:14:32 WARN  AbstractCommand:20 - Not enough elements in the stack. Throwing NotEnoughStackElements exception
+  2023-03-03 23:14:35 INFO  SingletonCommandFactory:69 - Creating command: PRINT
+  2023-03-03 23:14:35 INFO  AbstractCommand:18 - validating
+  2023-03-03 23:14:35 WARN  AbstractCommand:20 - Not enough elements in the stack. Throwing NotEnoughStackElements exception
+  2023-03-03 23:14:39 INFO  SingletonCommandFactory:69 - Creating command: SQRT
+  2023-03-03 23:14:39 INFO  AbstractCommand:18 - validating
+  2023-03-03 23:14:39 WARN  AbstractCommand:20 - Not enough elements in the stack. Throwing NotEnoughStackElements exception
+  2023-03-03 23:14:57 INFO  SingletonCommandFactory:69 - Creating command: DEFINE
+  2023-03-03 23:14:57 INFO  Define:26 - Trying to define: a = 1002.2
+  2023-03-03 23:15:04 INFO  SingletonCommandFactory:69 - Creating command: PUSH
+  2023-03-03 23:15:04 INFO  Push:25 - Pushing a
+  2023-03-03 23:15:07 INFO  SingletonCommandFactory:69 - Creating command: PRINT
+  2023-03-03 23:15:07 INFO  AbstractCommand:18 - validating
+  2023-03-03 23:15:07 INFO  Print:21 - Trying to print top of stack
+  2023-03-03 23:15:15 INFO  SingletonCommandFactory:69 - Creating command: DEFINE
+  2023-03-03 23:15:15 INFO  Define:26 - Trying to define: b = a
+  2023-03-03 23:15:22 INFO  SingletonCommandFactory:69 - Creating command: PUSH
+  2023-03-03 23:15:22 INFO  Push:25 - Pushing a
+  2023-03-03 23:15:26 INFO  SingletonCommandFactory:69 - Creating command: PUSH
+  2023-03-03 23:15:26 INFO  Push:25 - Pushing b
+  2023-03-03 23:15:30 INFO  SingletonCommandFactory:69 - Creating command: +
+  2023-03-03 23:15:30 INFO  AbstractCommand:18 - validating
+  2023-03-03 23:15:30 INFO  Add:13 - Adding 1002.2 and 1002.2
+  2023-03-03 23:15:36 INFO  SingletonCommandFactory:69 - Creating command: PRINT
+  2023-03-03 23:15:36 INFO  AbstractCommand:18 - validating
+  2023-03-03 23:15:36 INFO  Print:21 - Trying to print top of stack
+  2023-03-03 23:15:42 INFO  SingletonCommandFactory:69 - Creating command: *
+  2023-03-03 23:15:42 INFO  AbstractCommand:18 - validating
+  2023-03-03 23:15:42 INFO  Multiply:13 - Multiplying 1002.2 and 2004.4
+  2023-03-03 23:15:44 INFO  SingletonCommandFactory:69 - Creating command: PRINT
+  2023-03-03 23:15:44 INFO  AbstractCommand:18 - validating
+  2023-03-03 23:15:44 INFO  Print:21 - Trying to print top of stack
+  2023-03-03 23:15:54 INFO  SingletonCommandFactory:69 - Creating command: PUSH
+  2023-03-03 23:15:54 INFO  Push:25 - Pushing 0
+  2023-03-03 23:16:00 INFO  SingletonCommandFactory:69 - Creating command: /
+  2023-03-03 23:16:00 INFO  AbstractCommand:18 - validating
+  2023-03-03 23:16:00 WARN  Divide:18 - Division by zero
+  2023-03-03 23:16:06 INFO  SingletonCommandFactory:69 - Creating command: SQRT
+  2023-03-03 23:16:06 INFO  AbstractCommand:18 - validating
+  2023-03-03 23:16:06 INFO  Sqrt:25 - Take the square root of 0.0
+  2023-03-03 23:16:10 INFO  SingletonCommandFactory:69 - Creating command: ADD
+  2023-03-03 23:16:10 WARN  SingletonCommandFactory:73 - Cannot find class: ADD
+  2023-03-03 23:16:13 INFO  SingletonCommandFactory:69 - Creating command: +
+  2023-03-03 23:16:13 INFO  AbstractCommand:18 - validating
+  2023-03-03 23:16:13 INFO  Add:13 - Adding 2008809.6800000002 and 0.0
+  2023-03-03 23:16:15 INFO  SingletonCommandFactory:69 - Creating command: PRINT
+  2023-03-03 23:16:15 INFO  AbstractCommand:18 - validating
+  2023-03-03 23:16:15 INFO  Print:21 - Trying to print top of stack
+  2023-03-03 23:17:24 INFO  SingletonCommandFactory:28 - Initializing command factory
+  2023-03-03 23:17:24 INFO  SingletonCommandFactory:69 - Creating command: DEFINE
+  2023-03-03 23:17:24 INFO  Define:26 - Trying to define: a = 4
+  2023-03-03 23:17:24 INFO  SingletonCommandFactory:69 - Creating command: PUSH
+  2023-03-03 23:17:24 INFO  Push:25 - Pushing a
+  2023-03-03 23:17:24 INFO  SingletonCommandFactory:69 - Creating command: SQRT
+  2023-03-03 23:17:24 INFO  AbstractCommand:18 - validating
+  2023-03-03 23:17:24 INFO  Sqrt:25 - Take the square root of 4.0
+  2023-03-03 23:17:24 INFO  SingletonCommandFactory:69 - Creating command: PRINT
+  2023-03-03 23:17:24 INFO  AbstractCommand:18 - validating
+  2023-03-03 23:17:24 INFO  Print:21 - Trying to print top of stack
+  2023-03-03 23:17:43 INFO  SingletonCommandFactory:28 - Initializing command factory
+  2023-03-03 23:17:43 INFO  SingletonCommandFactory:69 - Creating command: DEFINE
+  2023-03-03 23:17:43 INFO  Define:26 - Trying to define: a = 4
+  2023-03-03 23:17:43 INFO  SingletonCommandFactory:69 - Creating command: PUSH
+  2023-03-03 23:17:43 INFO  Push:25 - Pushing a
+  2023-03-03 23:17:43 INFO  SingletonCommandFactory:69 - Creating command: SQRT
+  2023-03-03 23:17:43 INFO  AbstractCommand:18 - validating
+  2023-03-03 23:17:43 INFO  Sqrt:25 - Take the square root of 4.0
+  2023-03-03 23:17:43 INFO  SingletonCommandFactory:69 - Creating command: PRINT
+  2023-03-03 23:17:43 INFO  AbstractCommand:18 - validating
+  2023-03-03 23:17:43 INFO  Print:21 - Trying to print top of stack
+  2023-03-03 23:19:57 INFO  SingletonCommandFactory:28 - Initializing command factory
+  2023-03-03 23:19:57 INFO  SingletonCommandFactory:69 - Creating command: SQRT
+  2023-03-03 23:19:57 INFO  AbstractCommand:18 - validating
+  2023-03-03 23:19:57 WARN  Sqrt:18 - Sqrt command can't be applied to negative numbers
+  2023-03-03 23:19:57 INFO  SingletonCommandFactory:69 - Creating command: SQRT
+  2023-03-03 23:19:57 INFO  AbstractCommand:18 - validating
+  2023-03-03 23:19:57 WARN  AbstractCommand:20 - Not enough elements in the stack. Throwing NotEnoughStackElements exception
+  2023-03-03 23:19:57 INFO  SingletonCommandFactory:69 - Creating command: SQRT
+  2023-03-03 23:19:57 INFO  AbstractCommand:18 - validating
+  2023-03-03 23:19:57 INFO  Sqrt:25 - Take the square root of 121.423
+  2023-03-03 23:19:57 INFO  SingletonCommandFactory:69 - Creating command: /
+  2023-03-03 23:19:57 INFO  AbstractCommand:18 - validating
+  2023-03-03 23:19:57 WARN  Divide:18 - Division by zero
+  2023-03-03 23:19:57 INFO  SingletonCommandFactory:69 - Creating command: /
+  2023-03-03 23:19:57 INFO  AbstractCommand:18 - validating
+  2023-03-03 23:19:57 INFO  SingletonCommandFactory:69 - Creating command: /
+  2023-03-03 23:19:57 INFO  AbstractCommand:18 - validating
+  2023-03-03 23:19:57 WARN  AbstractCommand:20 - Not enough elements in the stack. Throwing NotEnoughStackElements exception
+  2023-03-03 23:19:57 INFO  SingletonCommandFactory:69 - Creating command: *
+  2023-03-03 23:19:57 INFO  AbstractCommand:18 - validating
+  2023-03-03 23:19:57 WARN  AbstractCommand:20 - Not enough elements in the stack. Throwing NotEnoughStackElements exception
+  2023-03-03 23:19:57 INFO  SingletonCommandFactory:69 - Creating command: *
+  2023-03-03 23:19:57 INFO  AbstractCommand:18 - validating
+  2023-03-03 23:19:57 INFO  Multiply:13 - Multiplying -121.423 and 20.4
+  2023-03-03 23:19:57 INFO  SingletonCommandFactory:69 - Creating command: -
+  2023-03-03 23:19:57 INFO  AbstractCommand:18 - validating
+  2023-03-03 23:19:57 INFO  Subtract:13 - Subtracting 10.0 - 20.4
+  2023-03-03 23:19:57 INFO  SingletonCommandFactory:69 - Creating command: -
+  2023-03-03 23:19:57 INFO  AbstractCommand:18 - validating
+  2023-03-03 23:19:57 WARN  AbstractCommand:20 - Not enough elements in the stack. Throwing NotEnoughStackElements exception
+  2023-03-03 23:19:57 INFO  SingletonCommandFactory:69 - Creating command: +
+  2023-03-03 23:19:57 INFO  AbstractCommand:18 - validating
+  2023-03-03 23:19:57 INFO  Add:13 - Adding 15.0 and -2.4
+  2023-03-03 23:19:57 INFO  SingletonCommandFactory:69 - Creating command: +
+  2023-03-03 23:19:57 INFO  AbstractCommand:18 - validating
+  2023-03-03 23:19:57 WARN  AbstractCommand:20 - Not enough elements in the stack. Throwing NotEnoughStackElements exception
+  2023-03-03 23:19:57 INFO  SingletonCommandFactory:69 - Creating command: POP
+  2023-03-03 23:19:57 INFO  AbstractCommand:18 - validating
+  2023-03-03 23:19:57 WARN  AbstractCommand:20 - Not enough elements in the stack. Throwing NotEnoughStackElements exception
+  2023-03-03 23:19:57 INFO  SingletonCommandFactory:69 - Creating command: POP
+  2023-03-03 23:19:57 INFO  AbstractCommand:18 - validating
+  2023-03-03 23:19:57 INFO  Pop:20 - Trying to pop from stack
+  2023-03-03 23:19:57 INFO  SingletonCommandFactory:69 - Creating command: DEFINE
+  2023-03-03 23:19:57 INFO  Define:26 - Trying to define: a = 1000.0
+  2023-03-03 23:19:57 INFO  SingletonCommandFactory:69 - Creating command: DEFINE
+  2023-03-03 23:19:57 INFO  Define:26 - Trying to define: b = a
+  2023-03-03 23:19:57 INFO  SingletonCommandFactory:69 - Creating command: DEFINE
+  2023-03-03 23:19:57 INFO  Define:26 - Trying to define: abc = avs
+  2023-03-03 23:19:57 WARN  Define:39 - trying to define not a number
+  2023-03-03 23:19:57 INFO  SingletonCommandFactory:69 - Creating command: DEFINE
+  2023-03-03 23:19:57 INFO  Define:26 - Trying to define: b = 1000.0
+  2023-03-03 23:19:57 INFO  SingletonCommandFactory:69 - Creating command: DEFINE
+  2023-03-03 23:19:57 WARN  Define:23 - Define: Wrong number of arguments
+  2023-03-03 23:19:57 INFO  SingletonCommandFactory:69 - Creating command: PUSH
+  2023-03-03 23:19:57 INFO  Push:25 - Pushing 121.3
+  2023-03-03 23:19:57 INFO  SingletonCommandFactory:69 - Creating command: PUSH
+  2023-03-03 23:19:57 INFO  Push:25 - Pushing abcs
+  2023-03-03 23:19:57 WARN  Push:38 - Args: abcs is not a number
+  2023-03-03 23:19:57 INFO  SingletonCommandFactory:69 - Creating command: PUSH
+  2023-03-03 23:19:57 INFO  Push:25 - Pushing a
+  2023-03-03 23:19:57 INFO  SingletonCommandFactory:69 - Creating command: POP
+  2023-03-03 23:19:57 INFO  AbstractCommand:18 - validating
+  2023-03-03 23:19:57 WARN  AbstractCommand:20 - Not enough elements in the stack. Throwing NotEnoughStackElements exception
+  2023-03-03 23:19:57 INFO  SingletonCommandFactory:69 - Creating command: POP
+  2023-03-03 23:19:57 INFO  AbstractCommand:18 - validating
+  2023-03-03 23:19:57 INFO  Pop:20 - Trying to pop from stack
+  2023-03-03 23:19:57 INFO  SingletonCommandFactory:69 - Creating command: DEFINE
+  2023-03-03 23:19:57 INFO  Define:26 - Trying to define: a = 1000.0
+  2023-03-03 23:19:57 INFO  SingletonCommandFactory:69 - Creating command: DEFINE
+  2023-03-03 23:19:57 INFO  Define:26 - Trying to define: b = a
+  2023-03-03 23:19:57 INFO  SingletonCommandFactory:69 - Creating command: DEFINE
+  2023-03-03 23:19:57 INFO  Define:26 - Trying to define: abc = avs
+  2023-03-03 23:19:57 WARN  Define:39 - trying to define not a number
+  2023-03-03 23:19:57 INFO  SingletonCommandFactory:69 - Creating command: DEFINE
+  2023-03-03 23:19:57 INFO  Define:26 - Trying to define: b = 1000.0
+  2023-03-03 23:19:57 INFO  SingletonCommandFactory:69 - Creating command: DEFINE
+  2023-03-03 23:19:57 WARN  Define:23 - Define: Wrong number of arguments
+  2023-03-03 23:19:57 INFO  SingletonCommandFactory:69 - Creating command: PUSH
+  2023-03-03 23:19:57 INFO  Push:25 - Pushing 121.3
+  2023-03-03 23:19:57 INFO  SingletonCommandFactory:69 - Creating command: PUSH
+  2023-03-03 23:19:57 INFO  Push:25 - Pushing abcs
+  2023-03-03 23:19:57 WARN  Push:38 - Args: abcs is not a number
+  2023-03-03 23:19:57 INFO  SingletonCommandFactory:69 - Creating command: PUSH
+  2023-03-03 23:19:57 INFO  Push:25 - Pushing a
+  2023-03-03 23:19:57 INFO  SingletonCommandFactory:69 - Creating command: SQRT
+  2023-03-03 23:19:57 INFO  AbstractCommand:18 - validating
+  2023-03-03 23:19:57 WARN  Sqrt:18 - Sqrt command can't be applied to negative numbers
+  2023-03-03 23:19:57 INFO  SingletonCommandFactory:69 - Creating command: SQRT
+  2023-03-03 23:19:57 INFO  AbstractCommand:18 - validating
+  2023-03-03 23:19:57 WARN  AbstractCommand:20 - Not enough elements in the stack. Throwing NotEnoughStackElements exception
+  2023-03-03 23:19:57 INFO  SingletonCommandFactory:69 - Creating command: SQRT
+  2023-03-03 23:19:57 INFO  AbstractCommand:18 - validating
+  2023-03-03 23:19:57 INFO  Sqrt:25 - Take the square root of 121.423
+  2023-03-03 23:19:57 INFO  SingletonCommandFactory:69 - Creating command: /
+  2023-03-03 23:19:57 INFO  AbstractCommand:18 - validating
+  2023-03-03 23:19:57 WARN  Divide:18 - Division by zero
+  2023-03-03 23:19:57 INFO  SingletonCommandFactory:69 - Creating command: /
+  2023-03-03 23:19:57 INFO  AbstractCommand:18 - validating
+  2023-03-03 23:19:57 INFO  SingletonCommandFactory:69 - Creating command: /
+  2023-03-03 23:19:57 INFO  AbstractCommand:18 - validating
+  2023-03-03 23:19:57 WARN  AbstractCommand:20 - Not enough elements in the stack. Throwing NotEnoughStackElements exception
+  2023-03-03 23:19:57 INFO  SingletonCommandFactory:69 - Creating command: *
+  2023-03-03 23:19:57 INFO  AbstractCommand:18 - validating
+  2023-03-03 23:19:57 WARN  AbstractCommand:20 - Not enough elements in the stack. Throwing NotEnoughStackElements exception
+  2023-03-03 23:19:57 INFO  SingletonCommandFactory:69 - Creating command: *
+  2023-03-03 23:19:57 INFO  AbstractCommand:18 - validating
+  2023-03-03 23:19:57 INFO  Multiply:13 - Multiplying -121.423 and 20.4
+  2023-03-03 23:19:57 INFO  SingletonCommandFactory:69 - Creating command: -
+  2023-03-03 23:19:57 INFO  AbstractCommand:18 - validating
+  2023-03-03 23:19:57 INFO  Subtract:13 - Subtracting 10.0 - 20.4
+  2023-03-03 23:19:57 INFO  SingletonCommandFactory:69 - Creating command: -
+  2023-03-03 23:19:57 INFO  AbstractCommand:18 - validating
+  2023-03-03 23:19:57 WARN  AbstractCommand:20 - Not enough elements in the stack. Throwing NotEnoughStackElements exception
+  2023-03-03 23:19:57 INFO  SingletonCommandFactory:69 - Creating command: +
+  2023-03-03 23:19:57 INFO  AbstractCommand:18 - validating
+  2023-03-03 23:19:57 INFO  Add:13 - Adding 15.0 and -2.4
+  2023-03-03 23:19:57 INFO  SingletonCommandFactory:69 - Creating command: +
+  2023-03-03 23:19:57 INFO  AbstractCommand:18 - validating
+  2023-03-03 23:19:57 WARN  AbstractCommand:20 - Not enough elements in the stack. Throwing NotEnoughStackElements exception
+  2023-03-03 23:19:57 INFO  SingletonCommandFactory:69 - Creating command: PRINT
+  2023-03-03 23:19:57 INFO  SingletonCommandFactory:69 - Creating command: *
+  2023-03-03 23:19:57 INFO  SingletonCommandFactory:69 - Creating command: PUSH
+  2023-03-03 23:19:57 INFO  SingletonCommandFactory:69 - Creating command: SQRT
+  2023-03-03 23:19:57 INFO  SingletonCommandFactory:69 - Creating command: +
+  2023-03-03 23:19:57 INFO  SingletonCommandFactory:69 - Creating command: POP
+  2023-03-03 23:19:57 INFO  SingletonCommandFactory:69 - Creating command: -
+  2023-03-03 23:19:57 INFO  SingletonCommandFactory:69 - Creating command: DEFINE
+  2023-03-03 23:19:57 INFO  SingletonCommandFactory:69 - Creating command: /
+  
