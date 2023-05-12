@@ -5,7 +5,6 @@ import model.asset.BackgroundViewData;
 import model.draw.buffer.DrawableBuffer;
 import model.event.GameEvent;
 import model.event.background.DrawBackgroundEvent;
-import model.state.score.Score;
 import service.observer.GameObserver;
 
 import javax.swing.*;

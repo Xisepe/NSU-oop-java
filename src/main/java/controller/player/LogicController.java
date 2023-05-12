@@ -2,8 +2,8 @@ package controller.player;
 
 import controller.DefaultController;
 import lombok.RequiredArgsConstructor;
-import model.event.game.changescreen.GameOverEvent;
 import model.event.background.DrawBackgroundEvent;
+import model.event.game.changescreen.GameOverEvent;
 import model.event.player.*;
 import model.event.sound.effects.PlayChopEffectSoundEvent;
 import model.event.sound.effects.PlayGameOverEffectSoundEvent;

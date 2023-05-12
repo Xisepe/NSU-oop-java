@@ -3,7 +3,6 @@ package controller.sound;
 import lombok.RequiredArgsConstructor;
 import model.asset.GameSoundData;
 import model.event.GameEvent;
-import model.event.sound.SoundEvent;
 import model.event.sound.background.PlayBackgroundMusicSoundEvent;
 import model.event.sound.background.StopBackgroundMusicSoundEvent;
 import model.event.sound.config.UpdateVolumeSoundEvent;

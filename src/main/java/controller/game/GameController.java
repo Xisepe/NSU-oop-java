@@ -18,7 +18,6 @@ import model.event.game.changescreen.GameOverEvent;
 import model.event.game.changescreen.MenuEvent;
 import model.event.game.changescreen.OpenSettingsEvent;
 import model.event.game.changescreen.StartGameEvent;
-import model.event.player.ScoreUpdateEvent;
 import model.player.Lumberjack;
 import model.settings.Settings;
 import model.state.Action;

@@ -1,6 +1,3 @@
-import model.event.GameEvent;
-import service.observer.GameObserver;
-
 import javax.swing.*;
 import java.awt.*;
 
