@@ -15,6 +15,11 @@ public class KeyboardController implements KeyListener {
     @Getter
     private boolean chopRight;
 
+    public void dropKeys() {
+        chopRight = false;
+        chopLeft = false;
+    }
+
 
     @Override
     public void keyTyped(KeyEvent e) {
@@ -27,7 +32,6 @@ public class KeyboardController implements KeyListener {
         } else if (e.getKeyCode() == settings.getChopLeft()) {
             chopLeft = true;
         }
-        System.out.println("Pressed");
     }
 
     @Override
@@ -37,6 +41,5 @@ public class KeyboardController implements KeyListener {
         } else if (e.getKeyCode() == settings.getChopLeft()) {
             chopLeft = false;
         }
-        System.out.println("Released");
     }
 }

@@ -18,11 +18,13 @@ import model.event.game.changescreen.GameOverEvent;
 import model.event.game.changescreen.MenuEvent;
 import model.event.game.changescreen.OpenSettingsEvent;
 import model.event.game.changescreen.StartGameEvent;
+import model.event.player.ScoreUpdateEvent;
 import model.player.Lumberjack;
 import model.settings.Settings;
 import model.state.Action;
 import model.state.Position;
 import model.state.score.Score;
+import model.time.GameTime;
 import model.tree.Tree;
 import service.dependency.resolver.DependencyResolver;
 import service.dependency.resolver.GameDependencyResolver;
@@ -31,7 +33,10 @@ import service.loader.image.ImageLoader;
 import service.loader.viewdata.LumberjackViewDataLoader;
 import service.loader.viewdata.TreeViewDataLoader;
 import service.observer.GameObserver;
+import view.GameOverView;
 import view.game.LumberjackView;
+import view.game.ScoreView;
+import view.game.TimerView;
 import view.game.TreeView;
 
 import javax.swing.*;
@@ -43,6 +48,7 @@ import java.util.Properties;
 @RequiredArgsConstructor
 public class GameController implements ActionListener, GameObserver {
     //model
+    private final GameTime gameTime;
     private final Lumberjack player;
     private final Tree tree;
     private final Score score;
@@ -57,9 +63,12 @@ public class GameController implements ActionListener, GameObserver {
     private final DrawableBuffer buffer;
     private final JFrame panelHolder;
     private final JPanel gameView;
+    private final JPanel gameOverView;
     private final JPanel settingsView;
     private final JPanel menuView;
 
+    private final ScoreView scoreView;
+    private final TimerView timerView;
     private final LumberjackView lumberjackView;
     private final TreeView treeView;
 
@@ -77,7 +86,7 @@ public class GameController implements ActionListener, GameObserver {
     private void resolveDependencies() {
         DependencyResolver dependencyResolver = new GameDependencyResolver(
                 this, soundController, logicController, keyboardController, settingsController,
-                lumberjackView, treeView, menuView, settingsView, gameView
+                scoreView, timerView, lumberjackView, treeView, menuView, settingsView, gameView, gameOverView
         );
         dependencyResolver.resolveDependencies();
     }
@@ -87,6 +96,8 @@ public class GameController implements ActionListener, GameObserver {
         initializePlayer();
         initializeTree();
         initializeScore();
+        initializeTime();
+        resetKeyboardController();
         replacePanelOnHolder(gameView);
         updateGameLoop();
         startGameLoop();
@@ -94,7 +105,13 @@ public class GameController implements ActionListener, GameObserver {
 
     private void gameOver() {
         stopGameLoop();
-        exitFromGame();
+        openGameOverView();
+    }
+
+    private void openGameOverView() {
+        gamePLaying = false;
+        ((GameOverView) gameOverView).updateScoreLabel();
+        replacePanelOnHolder(gameOverView);
     }
 
     private void openSettings() {
@@ -122,10 +139,12 @@ public class GameController implements ActionListener, GameObserver {
 
     private void startGameLoop() {
         gameLoop.start();
+        gameTime.start();
     }
 
     private void stopGameLoop() {
         gameLoop.stop();
+        gameTime.stop();
     }
 
     private void initializePlayer() {
@@ -140,6 +159,15 @@ public class GameController implements ActionListener, GameObserver {
 
     private void initializeScore() {
         score.setValue(0);
+    }
+
+    private void initializeTime() {
+        gameTime.drop();
+        timerView.updateTimeLabel();
+    }
+
+    private void resetKeyboardController() {
+        keyboardController.dropKeys();
     }
 
     private void updateGameLoop() {
@@ -167,6 +195,7 @@ public class GameController implements ActionListener, GameObserver {
         resizeComponent(newSize, gameView);
         resizeComponent(newSize, settingsView);
         resizeComponent(newSize, panelHolder);
+        resizeComponent(newSize, gameOverView);
     }
 
     @SneakyThrows
@@ -184,6 +213,10 @@ public class GameController implements ActionListener, GameObserver {
         updateFontSize(
                 Integer.parseInt(properties.getProperty(settings.getVideoSettings().getCurrentScreenResolution() + ".settingsView")),
                 settingsView
+        );
+        updateFontSize(
+                Integer.parseInt(properties.getProperty(settings.getVideoSettings().getCurrentScreenResolution() + ".gameOverView")),
+                gameOverView
         );
     }
 

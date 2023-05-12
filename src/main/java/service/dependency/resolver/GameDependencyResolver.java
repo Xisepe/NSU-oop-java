@@ -7,9 +7,8 @@ import controller.settings.SettingsController;
 import controller.sound.SoundController;
 import lombok.RequiredArgsConstructor;
 import service.observer.GameObservable;
-import view.game.GameView;
-import view.game.LumberjackView;
-import view.game.TreeView;
+import view.GameOverView;
+import view.game.*;
 import view.menu.MenuView;
 import view.settings.SettingsView;
 
@@ -23,11 +22,14 @@ public class GameDependencyResolver implements DependencyResolver {
     private final KeyboardController keyboardController;
     private final SettingsController settingsController;
 
+    private final ScoreView scoreView;
+    private final TimerView timerView;
     private final LumberjackView lumberjackView;
     private final TreeView treeView;
     private final JPanel menuView;
     private final JPanel settingsView;
     private final JPanel gameView;
+    private final JPanel gameOverView;
 
     @Override
     public void resolveDependencies() {
@@ -35,6 +37,12 @@ public class GameDependencyResolver implements DependencyResolver {
         resolveMenuViewDependencies();
         resolveSettingsViewDependencies();
         resolveGameViewDependencies();
+        resolveGameOverViewDependencies();
+    }
+
+    public void resolveGameOverViewDependencies() {
+        connectGameControllerToGameObservable((GameOverView) gameOverView);
+        connectSoundToGameObservable((GameOverView) gameOverView);
     }
 
     private void resolveLogicControllerDependencies() {
@@ -60,6 +68,8 @@ public class GameDependencyResolver implements DependencyResolver {
         logicController.addObserver((GameView) gameView);
         logicController.addObserver(lumberjackView);
         logicController.addObserver(treeView);
+        logicController.addObserver(scoreView);
+        logicController.addObserver(timerView);
     }
 
     private void connectKeyboardControllerToGameView() {

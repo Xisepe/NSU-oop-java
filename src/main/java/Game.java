@@ -11,12 +11,12 @@ import model.draw.buffer.DrawableBuffer;
 import model.player.Lumberjack;
 import model.settings.Settings;
 import model.state.score.Score;
+import model.time.GameTime;
 import model.tree.Tree;
 import service.loader.settings.SettingsServiceImpl;
 import service.loader.sound.SoundLoader;
-import view.game.GameView;
-import view.game.LumberjackView;
-import view.game.TreeView;
+import view.GameOverView;
+import view.game.*;
 import view.menu.MenuView;
 import view.settings.SettingsView;
 
@@ -25,6 +25,7 @@ import java.awt.image.BufferedImage;
 
 public class Game {
     //models
+    private final GameTime gameTime = new GameTime();
     private final Settings settings = SettingsServiceImpl.getInstance().load("settings.json");
     private final Lumberjack player = new Lumberjack();
     private final Tree tree = new Tree();
@@ -49,12 +50,20 @@ public class Game {
     private final LumberjackView lumberjackView = new LumberjackView(buffer, player, lumberjackViewData);
     private final TreeView treeView = new TreeView(buffer, tree, treeViewData);
     private final MenuView menuView = new MenuView(backgroundViewData);
+    private final GameOverView gameOverView = new GameOverView(backgroundViewData, score);
     private final SettingsView settingsView = new SettingsView(settings);
-    private final GameView gameView = new GameView(buffer, backgroundViewData);
+    private final ScoreView scoreView = new ScoreView(score);
+    private final TimerView timerView = new TimerView(gameTime);
+    private final GameView gameView = new GameView(buffer, backgroundViewData){{
+        setLayout(new FlowLayout(FlowLayout.CENTER, 30, 10));
+        add(scoreView);
+        add(timerView);
+    }};
     private final JPanelHolder panelHolder = new JPanelHolder();
     //controllers
     private final KeyboardController keyboardController = new KeyboardController(settings.getKeyboardSettings());
     private final LogicController logicController = new LogicController(
+            gameTime,
             keyboardController,
             player,
             tree,
@@ -63,7 +72,8 @@ public class Game {
     private final SettingsController settingsController = new SettingsController(settings, logicController);
     private final SoundController soundController = new SoundController(gameSoundData, settings.getVolumeSettings());
     private final GameController gameController = new GameController(
-            player, tree, score, settings, buffer, panelHolder, gameView, settingsView, menuView, lumberjackView, treeView,
+            gameTime, player, tree, score, settings, buffer,
+            panelHolder, gameView, gameOverView, settingsView, menuView, scoreView, timerView, lumberjackView, treeView,
             lumberjackViewData, treeViewData, backgroundViewData, logicController, soundController, settingsController,
             keyboardController
     );

@@ -1,36 +1,38 @@
-package view.menu;
+package view;
 
 import model.asset.BackgroundViewData;
 import model.event.GameEvent;
+import model.state.score.Score;
 import service.observer.GameObservable;
 import service.observer.GameObserver;
 import view.components.button.ExitFromGameButton;
-import view.components.button.OpenSettingsButton;
 import view.components.button.StartGameButton;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class MenuView extends JPanel implements GameObservable {
+
+public class GameOverView extends JPanel implements GameObservable {
     private final java.util.List<GameObserver> observers = new ArrayList<>();
     private final BackgroundViewData backgroundViewData;
+    private final JLabel scoreLabel = new JLabel();
+    private final Score score;
 
-    public MenuView(BackgroundViewData backgroundViewData) {
+    public GameOverView(BackgroundViewData backgroundViewData, Score score) {
         this.backgroundViewData = backgroundViewData;
+        this.score = score;
         setLayout(new GridBagLayout());
         GridBagConstraints gbc = initializeGridBagConstraints();
+        add(scoreLabel, gbc);
         add(new StartGameButton(this), gbc);
-        add(new OpenSettingsButton(this), gbc);
         add(new ExitFromGameButton(this), gbc);
         setFocusable(true);
         setVisible(true);
     }
 
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        g.drawImage(backgroundViewData.getBackground(), 0, 0, null);
+    public void updateScoreLabel() {
+        scoreLabel.setText("Score " + score.getValue());
     }
 
     private GridBagConstraints initializeGridBagConstraints() {
@@ -42,6 +44,12 @@ public class MenuView extends JPanel implements GameObservable {
         gbc.insets = new Insets(0, 0, 0, 0); // no padding
         gbc.anchor = GridBagConstraints.CENTER;
         return gbc;
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.drawImage(backgroundViewData.getBackground(), 0, 0, null);
     }
 
     @Override

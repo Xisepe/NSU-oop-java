@@ -4,9 +4,7 @@ import controller.DefaultController;
 import lombok.RequiredArgsConstructor;
 import model.event.game.changescreen.GameOverEvent;
 import model.event.background.DrawBackgroundEvent;
-import model.event.player.DrawChopLumberjackEvent;
-import model.event.player.DrawStandLumberjackEvent;
-import model.event.player.DrawSwingLumberjackEvent;
+import model.event.player.*;
 import model.event.sound.effects.PlayChopEffectSoundEvent;
 import model.event.sound.effects.PlayGameOverEffectSoundEvent;
 import model.event.tree.DrawAllTreeEvent;
@@ -14,10 +12,12 @@ import model.event.tree.DrawChoppedTreeEvent;
 import model.player.Lumberjack;
 import model.state.Action;
 import model.state.score.Score;
+import model.time.GameTime;
 import model.tree.Tree;
 
 @RequiredArgsConstructor
 public class LogicController extends DefaultController {
+    private final GameTime gameTime;
     private final KeyboardController keyboardController;
     private final Lumberjack player;
     private final Tree tree;
@@ -25,6 +25,8 @@ public class LogicController extends DefaultController {
 
     @Override
     public void update() {
+        checkTime();
+        updateTimeView();
         switch (player.getAction()) {
             case STAND: {
                 if (!isChop()) {
@@ -57,7 +59,16 @@ public class LogicController extends DefaultController {
 
     }
 
-
+    private void checkTime() {
+        if (gameTime.isTimeEnded()) {
+            gameOver();
+        }
+    }
+    private void updateTimeView() {
+        if (gameTime.isTimeChanged()) {
+            notifyAll(new TimeUpdateEvent());
+        }
+    }
 
     private void movePlayer() {
         if (keyboardController.isChopRight() && !keyboardController.isChopLeft()) {
@@ -92,6 +103,7 @@ public class LogicController extends DefaultController {
 
     private void updateScore() {
         score.increment();
+        notifyAll(new ScoreUpdateEvent());
     }
 
     private void drawChop() {
