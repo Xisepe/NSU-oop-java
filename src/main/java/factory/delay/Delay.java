@@ -1,8 +1,6 @@
 package factory.delay;
 
-import lombok.Data;
+import factory.wrapper.Wrapper;
 
-@Data
-public class Delay {
-    private int value;
+public class Delay extends Wrapper<Integer> {
 }
