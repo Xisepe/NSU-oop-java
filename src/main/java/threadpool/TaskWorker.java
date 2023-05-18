@@ -32,7 +32,6 @@ class TaskWorker implements Runnable {
                 Runnable task = tasksQueue.take();
                 task.run();
             } catch (InterruptedException e) {
-
             }
         }
     }
