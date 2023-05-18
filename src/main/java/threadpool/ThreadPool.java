@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class ThreadPool {
+    private final AtomicInteger completedTasks = new AtomicInteger(0);
     private final List<TaskWorker> workers;
     private final BlockingQueue<Runnable> tasksQueue;
     private volatile boolean isStopped = true;
@@ -19,7 +21,7 @@ public class ThreadPool {
 
     private void initializeWorkers(int numberOfWorkers) {
         for (int i = 0; i < numberOfWorkers; i++) {
-            this.workers.add(new TaskWorker(tasksQueue));
+            this.workers.add(new TaskWorker(completedTasks, tasksQueue));
         }
     }
 
@@ -52,6 +54,14 @@ public class ThreadPool {
             throw new IllegalStateException("Thread pool is stopped");
         }
         tasksQueue.offer(command);
+    }
+
+    public int getCurrentSize() {
+        return tasksQueue.size();
+    }
+
+    public int getCompletedTasks() {
+        return completedTasks.get();
     }
 
 }
