@@ -12,9 +12,9 @@ public class ThreadPool {
     private final BlockingQueue<Runnable> tasksQueue;
     private volatile boolean isStopped = true;
 
-    public ThreadPool(int numberOfWorkers, int maxQueueSize) {
+    public ThreadPool(int numberOfWorkers) {
         this.workers = new ArrayList<>(numberOfWorkers);
-        this.tasksQueue = new LinkedBlockingQueue<>(maxQueueSize);
+        this.tasksQueue = new LinkedBlockingQueue<>();
         initializeWorkers(numberOfWorkers);
         startWorkers();
     }
@@ -26,6 +26,7 @@ public class ThreadPool {
     }
 
     private void startWorkers() {
+        isStopped = false;
         this.workers.forEach(e -> new Thread(e).start());
     }
 

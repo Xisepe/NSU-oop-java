@@ -6,7 +6,7 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @RequiredArgsConstructor
-class TaskWorker implements Runnable {
+public class TaskWorker implements Runnable {
     private final AtomicInteger completedTasks;
     private final BlockingQueue<Runnable> tasksQueue;
     private Thread thread;

@@ -25,12 +25,18 @@ public class Dealer implements Runnable {
     @NonNull
     private final Delay delay;
     @NonNull
+    private final Object controllerLock;
+    @NonNull
     private final Wrapper<Boolean> loggerEnabled;
+
 
     @Override
     public void run() {
         while (!Thread.currentThread().isInterrupted()) {
             Car car = storage.take();
+            synchronized (controllerLock) {
+                controllerLock.notify();
+            }
             if (loggerEnabled.getValue()) {
                 log.info(String.format("Dealer:<%d>%s", id, car));
             }

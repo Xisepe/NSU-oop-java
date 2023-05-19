@@ -2,8 +2,11 @@ package factory.storage;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Storage<T> {
+    private final AtomicInteger totalDetails = new AtomicInteger(0);
+    private final AtomicInteger currentDetails = new AtomicInteger(0);
     private final int capacity;
     private final BlockingQueue<T> values;
 
@@ -22,6 +25,8 @@ public class Storage<T> {
             }
         }
         values.offer(value);
+        totalDetails.incrementAndGet();
+        currentDetails.incrementAndGet();
         notify();
     }
 
@@ -35,6 +40,7 @@ public class Storage<T> {
             }
         }
         notify();
+        currentDetails.decrementAndGet();
         return values.poll();
 
     }
@@ -47,5 +53,11 @@ public class Storage<T> {
         return values.isEmpty();
     }
 
+    public int getTotalDetails() {
+        return totalDetails.get();
+    }
 
+    public int getCurrentDetails() {
+        return currentDetails.get();
+    }
 }

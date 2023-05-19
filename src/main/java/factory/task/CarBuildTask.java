@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public class CarBuildTask implements Runnable {
+    private final int numberOfCars;
     private final Storage<Body> bodyStorage;
     private final Storage<Engine> engineStorage;
     private final Storage<Accessory> accessoryStorage;
@@ -16,10 +17,12 @@ public class CarBuildTask implements Runnable {
 
     @Override
     public void run() {
-        Body body = bodyStorage.take();
-        Engine engine = engineStorage.take();
-        Accessory accessory = accessoryStorage.take();
-        Car car = new Car(body, engine, accessory);
-        carStorage.store(car);
+        for (int i = 0; i < numberOfCars; i++) {
+            Body body = bodyStorage.take();
+            Engine engine = engineStorage.take();
+            Accessory accessory = accessoryStorage.take();
+            Car car = new Car(body, engine, accessory);
+            carStorage.store(car);
+        }
     }
 }

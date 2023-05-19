@@ -31,7 +31,7 @@ public class ThreadPoolController implements Runnable {
                         return;
                     }
                 }
-                factory.execute(new CarBuildTask(bodyStorage, engineStorage, accessoryStorage, carStorage));
+                factory.execute(new CarBuildTask(5,bodyStorage, engineStorage, accessoryStorage, carStorage));
             }
         }
     }
