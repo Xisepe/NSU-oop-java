@@ -7,7 +7,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 @RequiredArgsConstructor
 public class TaskWorker implements Runnable {
-    private final AtomicInteger completedTasks;
     private final Queue<Runnable> tasksQueue;
     private Thread thread;
     private volatile boolean isStopped;
@@ -35,7 +34,6 @@ public class TaskWorker implements Runnable {
                 }
                 Runnable task = tasksQueue.poll();
                 task.run();
-                completedTasks.incrementAndGet();
             }
         }
     }

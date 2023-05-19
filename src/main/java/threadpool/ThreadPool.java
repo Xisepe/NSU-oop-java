@@ -5,10 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
 
-import java.util.concurrent.atomic.AtomicInteger;
-
 public class ThreadPool {
-    private final AtomicInteger completedTasks = new AtomicInteger(0);
     private final List<TaskWorker> workers;
     private final Queue<Runnable> tasksQueue;
     private boolean isStopped;
@@ -22,7 +19,7 @@ public class ThreadPool {
 
     private void initializeWorkers(int numberOfWorkers) {
         for (int i = 0; i < numberOfWorkers; i++) {
-            this.workers.add(new TaskWorker(completedTasks, tasksQueue));
+            this.workers.add(new TaskWorker(tasksQueue));
         }
     }
 
@@ -44,13 +41,4 @@ public class ThreadPool {
             tasksQueue.notify();
         }
     }
-
-    public int getCurrentSize() {
-        return tasksQueue.size();
-    }
-
-    public int getCompletedTasks() {
-        return completedTasks.get();
-    }
-
 }
