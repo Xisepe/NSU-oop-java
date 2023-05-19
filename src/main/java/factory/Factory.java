@@ -32,8 +32,8 @@ public class Factory {
     }
 
     public void stop() {
-        threadManager.stopThreads();
         controllerThread.interrupt();
+        threadManager.stopThreads();
     }
 
 }

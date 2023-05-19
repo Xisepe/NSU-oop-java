@@ -2,20 +2,15 @@ package threadpool;
 
 import lombok.RequiredArgsConstructor;
 
-import java.util.concurrent.BlockingQueue;
+import java.util.Queue;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @RequiredArgsConstructor
 public class TaskWorker implements Runnable {
     private final AtomicInteger completedTasks;
-    private final BlockingQueue<Runnable> tasksQueue;
+    private final Queue<Runnable> tasksQueue;
     private Thread thread;
     private volatile boolean isStopped;
-
-
-    public synchronized boolean isStopped() {
-        return isStopped;
-    }
 
     public synchronized void stop() {
         if (isStopped) {
@@ -28,12 +23,19 @@ public class TaskWorker implements Runnable {
     @Override
     public void run() {
         this.thread = Thread.currentThread();
-        while (!isStopped) {
-            try {
-                Runnable task = tasksQueue.take();
+        synchronized (tasksQueue) {
+            while (!isStopped) {
+                while (tasksQueue.isEmpty()) {
+                    try {
+                        tasksQueue.wait();
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                        return;
+                    }
+                }
+                Runnable task = tasksQueue.poll();
                 task.run();
                 completedTasks.incrementAndGet();
-            } catch (InterruptedException e) {
             }
         }
     }

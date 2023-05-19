@@ -1,20 +1,21 @@
 package threadpool;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
+import java.util.Queue;
+
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class ThreadPool {
     private final AtomicInteger completedTasks = new AtomicInteger(0);
     private final List<TaskWorker> workers;
-    private final BlockingQueue<Runnable> tasksQueue;
-    private volatile boolean isStopped = true;
+    private final Queue<Runnable> tasksQueue;
+    private boolean isStopped;
 
     public ThreadPool(int numberOfWorkers) {
         this.workers = new ArrayList<>(numberOfWorkers);
-        this.tasksQueue = new LinkedBlockingQueue<>();
+        this.tasksQueue = new ArrayDeque<>();
         initializeWorkers(numberOfWorkers);
         startWorkers();
     }
@@ -26,35 +27,22 @@ public class ThreadPool {
     }
 
     private void startWorkers() {
-        isStopped = false;
         this.workers.forEach(e -> new Thread(e).start());
     }
 
     public synchronized void stop() {
         this.isStopped = true;
-        waitForTasksCompletion();
         workers.forEach(TaskWorker::stop);
     }
 
-    public synchronized void waitForTasksCompletion() {
-        while (!tasksQueue.isEmpty()) {
-            try {
-                Thread.sleep(10);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+    public void execute(Runnable command) {
+        synchronized (tasksQueue) {
+            if (isStopped) {
+                return;
             }
+            tasksQueue.offer(command);
+            tasksQueue.notify();
         }
-    }
-
-    public synchronized boolean isStopped() {
-        return isStopped;
-    }
-
-    public synchronized void execute(Runnable command) {
-        if (isStopped) {
-            throw new IllegalStateException("Thread pool is stopped");
-        }
-        tasksQueue.offer(command);
     }
 
     public int getCurrentSize() {
